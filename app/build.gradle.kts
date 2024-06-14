@@ -1,6 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -33,14 +34,58 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(libs.androidX.core)
+    implementation(libs.androidX.appCompat)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // UI layer libraries
+    implementation(libs.ui.material)
+    implementation(libs.ui.constraintLayout)
+
+    // region Unit tests
+//    testImplementation(libs.unitTests.junit)
+    // endregion
+
+    // region UI tests
+//    androidTestImplementation(libs.uiTests.junitExt)
+//    androidTestImplementation(libs.uiTests.espressoCore)
+    // endregion
+
+    // Glide
+    implementation(libs.glide)
+    implementation(libs.legacy.support.v4)
+    annotationProcessor(libs.compiler)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Interceptor
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    // KMMP
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.livedata.ktx)
+
+    // Koin
+    implementation(libs.koin.android)
+
+    // NavigationCompose + Fragment
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.fragment.ktx)
+
+    // coroutines
+    implementation(libs.kotlinx.coroutines.android)
+
+    // room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 }

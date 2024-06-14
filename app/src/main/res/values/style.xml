@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomBottomNavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">11dp</item>
+        <item name="android:fontFamily">@font/sf_regular</item>
+    </style>
+</resources>
