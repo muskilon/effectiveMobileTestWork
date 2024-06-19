@@ -23,8 +23,8 @@ class App : Application() {
         )
     }
     companion object {
-        private var appResources: Resources? = null
-        fun getAppResources(): Resources? {
+        private lateinit var appResources: Resources
+        fun getAppResources(): Resources {
             return appResources
         }
     }

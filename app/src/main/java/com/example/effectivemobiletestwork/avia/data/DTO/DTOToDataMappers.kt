@@ -9,7 +9,8 @@ class DTOToDataMappers {
                 id = it.id,
                 title = it.title,
                 town = it.town,
-                price = it.price.value.toInt()
+                price = it.price.value.toInt(),
+                cover = "em_" + it.id
             )
             newOffers
         }

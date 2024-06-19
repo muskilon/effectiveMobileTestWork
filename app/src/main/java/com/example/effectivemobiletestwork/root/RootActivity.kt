@@ -3,6 +3,7 @@ package com.example.effectivemobiletestwork.root
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.effectivemobiletestwork.R
@@ -32,6 +33,9 @@ class RootActivity : AppCompatActivity() {
 //                R.id.profileFragment
 //            }
 //        }
+    }
+    fun hideNavigation(isVisible: Boolean) {
+        binding.bottomNavigationView.isVisible = isVisible
     }
 
     override fun onDestroy() {
