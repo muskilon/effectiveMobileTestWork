@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CustomBottomNavigation" parent="Widget.Design.BottomNavigationView">
-        <item name="android:textSize">10sp</item>
-        <item name="lineHeight">11dp</item>
-        <item name="android:fontFamily">@font/sf_regular</item>
+    <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemPaddingTop">8dp</item>
+        <item name="itemPaddingBottom">6dp</item>
+        <item name="itemIconTint">@animator/tab_color</item>
+        <item name="itemTextColor">@animator/tab_color</item>
+        <item name="android:background">@color/black</item>
+        <item name="enforceMaterialTheme">false</item>
+        <item name="enforceTextAppearance">false</item>
+        <item name="itemRippleColor">@null</item>
+        <item name="compatShadowEnabled">false</item>
+        <item name="elevation">0dp</item>
+
+        <item name="itemTextAppearanceActive">@style/ActiveItemTextAppearance
+        </item>
+        <item name="itemTextAppearanceInactive">@style/InactiveItemTextAppearance
+        </item>
     </style>
+
+        <style name="ActiveItemTextAppearance">
+            <item name="android:textStyle">normal</item>
+            <item name="android:fontFamily">@font/sf_regular</item>
+            <item name="android:textSize">10sp</item>
+            <item name="android:lineSpacingMultiplier">0</item>
+        </style>
+
+        <style name="InactiveItemTextAppearance">
+            <item name="android:textStyle">normal</item>
+            <item name="android:fontFamily">@font/sf_regular</item>
+            <item name="android:textSize">10sp</item>
+            <item name="android:lineSpacingMultiplier">0</item>
+
+        </style>
 </resources>
