@@ -3,11 +3,11 @@ package com.example.effectivemobiletestwork.app
 import android.app.Application
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatDelegate
-import dataModules
-import domainModules
+import com.example.effectivemobiletestwork.di.dataModules
+import com.example.effectivemobiletestwork.di.domainModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import viewModelModules
+import com.example.effectivemobiletestwork.di.viewModelModules
 
 class App : Application() {
     override fun onCreate() {

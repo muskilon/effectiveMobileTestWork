@@ -10,10 +10,6 @@ import com.example.effectivemobiletestwork.R
 
 class AviaFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AviaFragment()
-    }
-
     private val viewModel: AviaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
