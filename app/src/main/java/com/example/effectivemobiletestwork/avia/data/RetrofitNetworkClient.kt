@@ -21,14 +21,7 @@ class RetrofitNetworkClient(
         withContext(Dispatchers.IO) {
             recommedations = try {
                 mockAPI.getRecommendations().body()?.let {
-                    Resource.Data(
-                        MainRecommendationDTO(
-                            id = it.id,
-                            title = it.title,
-                            town = it.town,
-                            price = it.price
-                        )
-                    )
+                    Resource.Data(it)
                 } ?: Resource.NotFound(NOT_FOUND)
             } catch (ex: IOException) {
                 Log.e(REQUEST_ERROR_TAG, ex.toString())

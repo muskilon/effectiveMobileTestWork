@@ -1,27 +1,32 @@
 package com.example.effectivemobiletestwork.avia.ui
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.effectivemobiletestwork.R
+import androidx.fragment.app.Fragment
+import com.example.effectivemobiletestwork.databinding.FragmentAviaBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AviaFragment : Fragment() {
-
-    private val viewModel: AviaViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
+    private var _binding: FragmentAviaBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModel<AviaViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_avia, container, false)
+        _binding = FragmentAviaBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getRecommendations()
+        Log.d("TAG", "OINK")
     }
 }
