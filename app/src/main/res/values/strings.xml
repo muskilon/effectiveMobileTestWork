@@ -5,4 +5,9 @@
     <string name="profile">Профиль</string>
     <string name="hotels">Отели</string>
     <string name="avia">Авиабилеты</string>
+    <string name="avia_title">Поиск дешевых\nавиабилетов</string>
+    <string name="hint_for_from">Откуда - Москва</string>
+    <string name="hint_for_to">Куда - Турция</string>
+    <string name="russian_alphabet">абвгдеёжзийклмнопрстуфхцчшщъыьэюя АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ</string>
+    <string name="music_title">Музыкально отлететь</string>
 </resources>

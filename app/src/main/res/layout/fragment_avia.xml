@@ -1,13 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".avia.ui.AviaFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_semibold"
+        android:gravity="center"
+        android:paddingTop="26dp"
+        android:text="@string/avia_title"
+        android:textColor="@color/grey_8"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchBackplate"
+        android:layout_width="0dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="36dp"
+        app:cardCornerRadius="16dp"
+        android:backgroundTint="@color/grey_2"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchBackplateInner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/grey_4"
+        app:cardElevation="9dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@id/searchBackplate"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="@id/searchBackplate" />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:src="@drawable/icon_search"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/searchBackplateInner"
+        app:layout_constraintStart_toStartOf="@id/searchBackplateInner"
+        app:layout_constraintTop_toTopOf="@id/searchBackplateInner" />
+
+    <EditText
+        android:id="@+id/from"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:digits="@string/russian_alphabet"
+        android:fontFamily="@font/sf_regular"
+        android:hint="@string/hint_for_from"
+        android:inputType="text"
+        android:lines="1"
+        android:textColorHint="@color/grey_6"
+        android:textSize="16sp"
+        android:translationZ="10dp"
+        app:layout_constraintStart_toEndOf="@id/searchIcon"
+        app:layout_constraintTop_toTopOf="@id/searchBackplateInner" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:translationZ="10dp"
+        app:dividerColor="@color/grey_5"
+        app:layout_constraintBottom_toBottomOf="@id/searchBackplateInner"
+        app:layout_constraintEnd_toEndOf="@id/searchBackplateInner"
+        app:layout_constraintStart_toEndOf="@id/searchIcon"
+        app:layout_constraintTop_toTopOf="@id/searchBackplateInner" />
+
+    <EditText
+        android:id="@+id/to"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:digits="@string/russian_alphabet"
+        android:fontFamily="@font/sf_regular"
+        android:hint="@string/hint_for_to"
+        android:inputType="text"
+        android:lines="1"
+        android:textColorHint="@color/grey_6"
+        android:textSize="16sp"
+        android:translationZ="10dp"
+        app:layout_constraintStart_toEndOf="@id/searchIcon"
+        app:layout_constraintTop_toTopOf="@id/divider"/>
+
+    <TextView
+        android:id="@+id/musicTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        app:layout_constraintTop_toBottomOf="@id/searchBackplate"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        android:text="@string/music_title"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:fontFamily="@font/sf_semibold"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:layout_marginTop="19dp"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintTop_toBottomOf="@id/musicTitle"
+        tools:listitem="@layout/item_recomendations"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
