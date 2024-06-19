@@ -1,8 +1,7 @@
 package com.example.effectivemobiletestwork.avia.data
 
-import android.util.Log
 import com.example.effectivemobiletestwork.avia.data.DTO.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.domain.MainRecommendation
+import com.example.effectivemobiletestwork.avia.domain.Offer
 import com.example.effectivemobiletestwork.avia.domain.RecommendationRepository
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers
@@ -14,11 +13,11 @@ class RecommendationRepositoryImpl(
         private val networkClient: NetworkClient,
         private val mapper: DTOToDataMappers
     ) : RecommendationRepository {
-        override suspend fun getRecommendations(): Flow<Resource<List<MainRecommendation>>> = flow {
+        override suspend fun getRecommendations(): Flow<Resource<List<Offer>>> = flow {
             when (val response = networkClient.getRecommendations()) {
                 is Resource.Data -> {
                     with(response) {
-                        val data = mapper.recommendationsDTOToMainRecommendations()
+                        val data = mapper.recommendationsDTOToMainRecommendations(this.value.offers)
                         emit(Resource.Data(data))
                     }
                 }

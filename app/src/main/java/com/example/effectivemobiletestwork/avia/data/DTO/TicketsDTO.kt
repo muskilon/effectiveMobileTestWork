@@ -3,7 +3,7 @@ package com.example.effectivemobiletestwork.avia.data.DTO
 import com.google.gson.annotations.SerializedName
 
 data class TicketsDTO(
-    val tickets: ArrayList<Tickets>
+    val tickets: List<Ticket>
 )
 
 data class Departure(
@@ -26,7 +26,7 @@ data class HandLuggage (
     val hasHandLuggage: Boolean,
     val size: String
 )
-data class Tickets (
+data class Ticket (
     val id: Int,
     val badge: String,
     val price: Price,

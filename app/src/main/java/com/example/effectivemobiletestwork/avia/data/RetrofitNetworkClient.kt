@@ -13,7 +13,8 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 
 class RetrofitNetworkClient(
-    private val context: Context, private val mockAPI: MockAPI
+    private val context: Context,
+    private val mockAPI: MockAPI
 ) : NetworkClient {
     override suspend fun getRecommendations(): Resource<MainRecommendationDTO> {
         var recommedations: Resource<MainRecommendationDTO>
@@ -32,11 +33,35 @@ class RetrofitNetworkClient(
     }
 
     override suspend fun getTicketsOffers(): Resource<TicketsOffersDTO> {
-        TODO("Not yet implemented")
+        var ticketsOffers: Resource<TicketsOffersDTO>
+        if (!isConnected()) return Resource.ConnectionError(OFFLINE)
+        withContext(Dispatchers.IO) {
+            ticketsOffers = try {
+                mockAPI.getTicketsOffers().body()?.let {
+                    Resource.Data(it)
+                } ?: Resource.NotFound(NOT_FOUND)
+            } catch (ex: IOException) {
+                Log.e(REQUEST_ERROR_TAG, ex.toString())
+                Resource.ConnectionError(REQUEST_ERROR_TAG)
+            }
+        }
+        return ticketsOffers
     }
 
     override suspend fun getTickets(): Resource<TicketsDTO> {
-        TODO("Not yet implemented")
+        var tickets: Resource<TicketsDTO>
+        if (!isConnected()) return Resource.ConnectionError(OFFLINE)
+        withContext(Dispatchers.IO) {
+            tickets = try {
+                mockAPI.getTickets().body()?.let {
+                    Resource.Data(it)
+                } ?: Resource.NotFound(NOT_FOUND)
+            } catch (ex: IOException) {
+                Log.e(REQUEST_ERROR_TAG, ex.toString())
+                Resource.ConnectionError(REQUEST_ERROR_TAG)
+            }
+        }
+        return tickets
     }
 
     private fun isConnected(): Boolean {

@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class TicketsOffersDTO(
     @SerializedName("tickets_offers")
-    val ticketsOffers: ArrayList<TicketsOffers>
+    val ticketsOffers: List<TicketsOffers>
 )
 
 data class TicketsOffers(
     val id: String,
-    var title: String,
+    val title: String,
     @SerializedName("time_range")
     val timeRange: ArrayList<String>,
-    val price: Price = Price()
+    val price: Price
 )
 
 data class Price(
-    val value: Int? = null
+    val value: String
 )

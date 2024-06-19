@@ -27,6 +27,7 @@ class AviaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getRecommendations()
-        Log.d("TAG", "OINK")
+        viewModel.getTickets()
+        viewModel.getTicketsOffers()
     }
 }

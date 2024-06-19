@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 class RecommendationsInteractorImpl(
     private val repository: RecommendationRepository
 ): RecommendationsInteractor {
-    override suspend fun getRecommendations(): Flow<Resource<List<MainRecommendation>>> = repository.getRecommendations()
+    override suspend fun getRecommendations(): Flow<Resource<List<Offer>>> = repository.getRecommendations()
 }

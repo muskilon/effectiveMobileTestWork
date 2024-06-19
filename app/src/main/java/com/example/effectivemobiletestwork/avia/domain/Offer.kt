@@ -1,8 +1,8 @@
 package com.example.effectivemobiletestwork.avia.domain
 
-data class MainRecommendation(
+data class Offer(
     val id: String,
     val title: String,
     val town: String,
-    val price: String
+    val price: Int
 )

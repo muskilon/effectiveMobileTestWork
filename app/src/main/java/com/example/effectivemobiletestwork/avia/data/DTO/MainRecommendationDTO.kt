@@ -1,9 +1,9 @@
 package com.example.effectivemobiletestwork.avia.data.DTO
 
-class MainRecommendationDTO(
-    val offers: List<Offer>
+data class MainRecommendationDTO(
+    val offers: List<OfferDTO>
 )
-data class Offer(
+data class OfferDTO(
     val id: String,
     val title: String,
     val town: String,
