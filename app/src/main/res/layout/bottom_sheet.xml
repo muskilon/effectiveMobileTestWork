@@ -2,17 +2,294 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_9"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
     <View
+        android:id="@+id/rounder"
         android:layout_width="40dp"
         android:layout_height="4dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="12dp"
         android:background="@drawable/rounder"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
         />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchBackplate"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/rounder"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        android:backgroundTint="@color/grey_2"
+        />
+    <ImageView
+        android:id="@+id/avia2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/avia2"
+        app:layout_constraintStart_toStartOf="@id/searchBackplate"
+        app:layout_constraintTop_toTopOf="@id/searchBackplate"
+        app:tint="@color/grey_5"/>
+
+    <EditText
+        android:id="@+id/from"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_for_from"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/avia2"
+        app:layout_constraintTop_toTopOf="@id/searchBackplate"
+        style="@style/edit_text" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        app:dividerColor="@color/grey_4"
+        app:layout_constraintBottom_toBottomOf="@id/searchBackplate"
+        app:layout_constraintEnd_toEndOf="@id/searchBackplate"
+        app:layout_constraintStart_toStartOf="@id/searchBackplate"
+        app:layout_constraintTop_toTopOf="@id/searchBackplate" />
+
+    <ImageView
+        android:id="@+id/searchIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/icon_search"
+        app:layout_constraintStart_toStartOf="@id/searchBackplate"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:tint="@color/white"/>
+
+    <EditText
+        android:id="@+id/to"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:hint="@string/hint_for_to"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@id/searchIcon"
+        app:layout_constraintTop_toTopOf="@id/divider"
+        style="@style/edit_text"/>
+
+    <LinearLayout
+        android:id="@+id/fastDial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        app:layout_constraintTop_toBottomOf="@id/searchBackplate">
+
+    <TextView
+        android:id="@+id/hard_route"
+        app:drawableTopCompat="@drawable/hard_route"
+        android:layout_weight="1"
+        android:text="@string/hard_route"
+        style="@style/fast_dial_text" />
+
+    <TextView
+        android:id="@+id/everywhere"
+        android:layout_weight="1"
+        app:drawableTopCompat="@drawable/everywhere"
+        android:text="@string/everywhere"
+        style="@style/fast_dial_text" />
+
+    <TextView
+        android:id="@+id/weekend"
+        android:layout_weight="1"
+        app:drawableTopCompat="@drawable/weekend"
+        android:text="@string/weekend"
+        style="@style/fast_dial_text" />
+
+    <TextView
+        android:id="@+id/hot_tickets"
+        android:layout_weight="1"
+        app:drawableTopCompat="@drawable/hot_tickets"
+        android:text="@string/hot_tickets"
+        style="@style/fast_dial_text" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/popular_routes"
+        android:layout_width="0dp"
+        android:layout_height="216dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        android:backgroundTint="@color/grey_3"
+        app:layout_constraintTop_toBottomOf="@id/fastDial"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/istanbul"
+            app:cardCornerRadius="8dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="@id/popular_routes"
+            app:layout_constraintStart_toStartOf="@id/popular_routes"
+            style="@style/popular_routes_cardview"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/istanbul"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/istanbul"
+        app:layout_constraintTop_toTopOf="@id/istanbul"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="@string/istanbul"
+        android:layout_marginStart="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/istanbul"
+        app:layout_constraintBottom_toBottomOf="@id/istanbul"
+        android:fontFamily="@font/sf_regular"
+        android:textSize="14sp"
+        android:textColor="@color/grey_5"
+        android:text="@string/popular_route"
+        android:layout_marginStart="8dp"
+        />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey_4"
+            app:layout_constraintTop_toBottomOf="@id/istanbul"
+            app:layout_constraintStart_toStartOf="@id/popular_routes"
+            app:layout_constraintEnd_toEndOf="@id/popular_routes"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sochi"
+            app:cardCornerRadius="8dp"
+            style="@style/popular_routes_cardview"
+            app:layout_constraintTop_toBottomOf="@id/istanbul"
+            app:layout_constraintStart_toStartOf="@id/popular_routes"
+            android:layout_marginTop="24dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sochi"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/sochi"
+        app:layout_constraintTop_toTopOf="@id/sochi"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="@string/sochi"
+        android:layout_marginStart="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/sochi"
+        app:layout_constraintBottom_toBottomOf="@id/sochi"
+        android:fontFamily="@font/sf_regular"
+        android:textSize="14sp"
+        android:textColor="@color/grey_5"
+        android:text="@string/popular_route"
+        android:layout_marginStart="8dp"
+        />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey_4"
+            app:layout_constraintTop_toBottomOf="@id/sochi"
+            app:layout_constraintStart_toStartOf="@id/popular_routes"
+            app:layout_constraintEnd_toEndOf="@id/popular_routes"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/phuket"
+            app:cardCornerRadius="8dp"
+            style="@style/popular_routes_cardview"
+            app:layout_constraintTop_toBottomOf="@id/sochi"
+            app:layout_constraintStart_toStartOf="@id/popular_routes"
+            android:layout_marginTop="24dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/phuket"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/phuket"
+        app:layout_constraintTop_toTopOf="@id/phuket"
+        android:fontFamily="@font/sf_semibold"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="@string/phuket"
+        android:layout_marginStart="8dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/phuket"
+        app:layout_constraintBottom_toBottomOf="@id/phuket"
+        android:fontFamily="@font/sf_regular"
+        android:textSize="14sp"
+        android:textColor="@color/grey_5"
+        android:text="@string/popular_route"
+        android:layout_marginStart="8dp"
+        />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey_4"
+            app:layout_constraintTop_toBottomOf="@id/phuket"
+            app:layout_constraintStart_toStartOf="@id/popular_routes"
+            app:layout_constraintEnd_toEndOf="@id/popular_routes"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,4 +10,12 @@
     <string name="hint_for_to">Куда - Турция</string>
     <string name="russian_alphabet">абвгдеёжзийклмнопрстуфхцчшщъыьэюя АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ</string>
     <string name="music_title">Музыкально отлететь</string>
+    <string name="hard_route">Сложный\nмаршрут</string>
+    <string name="everywhere">Куда угодно</string>
+    <string name="weekend">Выходные</string>
+    <string name="hot_tickets">Горячие\nбилеты</string>
+    <string name="istanbul">Стамбул</string>
+    <string name="popular_route">Популярное направление</string>
+    <string name="phuket">Пхукет</string>
+    <string name="sochi">Сочи</string>
 </resources>

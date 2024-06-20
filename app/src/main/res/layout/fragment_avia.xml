@@ -81,22 +81,12 @@
 
     <EditText
         android:id="@+id/from"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
-        android:digits="@string/russian_alphabet"
-        android:fontFamily="@font/sf_semibold"
         android:hint="@string/hint_for_from"
-        android:inputType="text"
-        android:lines="1"
-        android:textColorHint="@color/grey_6"
-        android:textColor="@color/white"
-        android:textSize="16sp"
         android:translationZ="10dp"
         app:layout_constraintStart_toEndOf="@id/searchIcon"
-        app:layout_constraintTop_toTopOf="@id/searchBackplateInner" />
+        app:layout_constraintTop_toTopOf="@id/searchBackplateInner"
+        style="@style/edit_text" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"
@@ -112,22 +102,13 @@
 
     <EditText
         android:id="@+id/to"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:digits="@string/russian_alphabet"
-        android:fontFamily="@font/sf_semibold"
         android:hint="@string/hint_for_to"
-        android:inputType="text"
-        android:lines="1"
-        android:textColorHint="@color/grey_6"
-        android:textColor="@color/white"
-        android:textSize="16sp"
         android:translationZ="10dp"
         app:layout_constraintStart_toEndOf="@id/searchIcon"
-        app:layout_constraintTop_toTopOf="@id/divider" />
+        app:layout_constraintTop_toTopOf="@id/divider"
+        style="@style/edit_text"/>
 
     <TextView
         android:id="@+id/musicTitle"
