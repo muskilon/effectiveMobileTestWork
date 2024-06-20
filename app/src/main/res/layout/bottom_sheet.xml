@@ -61,16 +61,6 @@
         app:layout_constraintStart_toEndOf="@id/avia2"
         app:layout_constraintTop_toTopOf="@id/searchBackplate" />
 
-    <!--    <ImageView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:src="@drawable/change_direction"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/searchBackplate"-->
-    <!--        app:layout_constraintEnd_toEndOf="@id/searchBackplate"-->
-    <!--        android:layout_marginEnd="22dp"-->
-    <!--        android:layout_marginTop="24dp"-->
-    <!--        />-->
-
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/divider"
         android:layout_width="0dp"
@@ -316,27 +306,27 @@
         android:id="@+id/istanbul_click"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/istanbul"
-        app:layout_constraintTop_toTopOf="@id/istanbul"
         app:layout_constraintBottom_toBottomOf="@id/istanbul"
-        app:layout_constraintEnd_toEndOf="@id/istanbul_popular"/>
+        app:layout_constraintEnd_toEndOf="@id/istanbul_popular"
+        app:layout_constraintStart_toStartOf="@id/istanbul"
+        app:layout_constraintTop_toTopOf="@id/istanbul" />
 
     <View
         android:id="@+id/phuket_click"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/phuket"
-        app:layout_constraintTop_toTopOf="@id/phuket"
         app:layout_constraintBottom_toBottomOf="@id/phuket"
-        app:layout_constraintEnd_toEndOf="@id/phuketPopular"/>
+        app:layout_constraintEnd_toEndOf="@id/phuketPopular"
+        app:layout_constraintStart_toStartOf="@id/phuket"
+        app:layout_constraintTop_toTopOf="@id/phuket" />
 
     <View
         android:id="@+id/sochi_click"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/sochi"
-        app:layout_constraintTop_toTopOf="@id/sochi"
         app:layout_constraintBottom_toBottomOf="@id/sochi"
-        app:layout_constraintEnd_toEndOf="@id/sochiPopular"/>
+        app:layout_constraintEnd_toEndOf="@id/sochiPopular"
+        app:layout_constraintStart_toStartOf="@id/sochi"
+        app:layout_constraintTop_toTopOf="@id/sochi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

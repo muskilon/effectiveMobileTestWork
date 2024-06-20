@@ -5,11 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.app.App
 import com.example.effectivemobiletestwork.avia.domain.Offer
-import com.example.effectivemobiletestwork.databinding.ItemRecomendationsBinding
+import com.example.effectivemobiletestwork.databinding.ItemRecommendationsBinding
 import java.text.NumberFormat
 
 class AviaViewHolder(
-    private val binding: ItemRecomendationsBinding
+    private val binding: ItemRecommendationsBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(model: Offer) {
         binding.city.text = model.town

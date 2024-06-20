@@ -61,6 +61,7 @@ class AviaFragment : Fragment() {
             RecyclerView.HORIZONTAL
         )
         with(binding) {
+            to.setOnClickListener { bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED }
             offersRecycler.adapter = aviaAdapter
             offersRecycler.addItemDecoration(
                 divider.apply {
@@ -106,5 +107,10 @@ class AviaFragment : Fragment() {
         }
 
         override fun afterTextChanged(s: Editable?) = Unit
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

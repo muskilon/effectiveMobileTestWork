@@ -8,7 +8,11 @@
         android:id="@+id/aviaFragment"
         android:name="com.example.effectivemobiletestwork.avia.ui.AviaFragment"
         android:label="fragment_avia"
-        tools:layout="@layout/fragment_avia" />
+        tools:layout="@layout/fragment_avia" >
+        <action
+            android:id="@+id/action_aviaFragment_to_selectedCountryFragment"
+            app:destination="@id/selectedCountryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hotelsFragment"
         android:name="com.example.effectivemobiletestwork.hotels.ui.HotelsFragment"
@@ -29,4 +33,9 @@
         android:name="com.example.effectivemobiletestwork.subscriptions.ui.SubscriptionsFragment"
         android:label="fragment_subscriptions"
         tools:layout="@layout/fragment_subscriptions" />
+    <fragment
+        android:id="@+id/selectedCountryFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.SelectedCountryFragment"
+        android:label="fragment_selected_country"
+        tools:layout="@layout/fragment_selected_country" />
 </navigation>
