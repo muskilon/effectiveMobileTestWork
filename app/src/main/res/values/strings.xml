@@ -21,4 +21,6 @@
     <string name="back">обратно</string>
     <string name="econom">1,эконом</string>
     <string name="filter">фильтр</string>
+    <string name="direct_flights">Прямые рейсы</string>
+    <string name="show_all_tickets">Показать все</string>
 </resources>
