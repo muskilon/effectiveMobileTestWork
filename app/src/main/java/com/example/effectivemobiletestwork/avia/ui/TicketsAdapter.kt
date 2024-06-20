@@ -4,30 +4,30 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.effectivemobiletestwork.avia.domain.model.Offer
-import com.example.effectivemobiletestwork.databinding.ItemRecommendationsBinding
+import com.example.effectivemobiletestwork.avia.domain.model.Ticket
+import com.example.effectivemobiletestwork.databinding.ItemTicketBinding
 
-class TicketsAdapter : RecyclerView.Adapter<AviaViewHolder>() {
-    private val offers = ArrayList<Offer>()
+class TicketsAdapter : RecyclerView.Adapter<TicketsViewHolder>() {
+    private val tickets = ArrayList<Ticket>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AviaViewHolder {
-        return AviaViewHolder(
-            ItemRecommendationsBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketsViewHolder {
+        return TicketsViewHolder(
+            ItemTicketBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
-    override fun getItemCount(): Int = offers.size
+    override fun getItemCount(): Int = tickets.size
 
-    override fun onBindViewHolder(holder: AviaViewHolder, position: Int) {
-        holder.bind(offers[position])
+    override fun onBindViewHolder(holder: TicketsViewHolder, position: Int) {
+        holder.bind(tickets[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(newOffers: List<Offer>) {
-        offers.clear()
-        offers.addAll(newOffers)
+    fun setData(newTickets: List<Ticket>) {
+        tickets.clear()
+        tickets.addAll(newTickets)
         notifyDataSetChanged()
     }
 }

@@ -9,5 +9,6 @@ data class Ticket(
     val departureDate: String,
     val departureAirport: String,
     val timeInFlight: String,
+    val options: String,
     val transfer: Boolean
 )

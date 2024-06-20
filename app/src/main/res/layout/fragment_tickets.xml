@@ -53,7 +53,7 @@
         tools:text="23 февраля, 1 пассажир"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/offersRecycler"
+        android:id="@+id/ticketsRecycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

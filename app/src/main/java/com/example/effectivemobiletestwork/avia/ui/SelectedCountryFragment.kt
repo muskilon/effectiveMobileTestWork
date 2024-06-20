@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -56,6 +57,9 @@ class SelectedCountryFragment : Fragment() {
         binding.backDate.setOnClickListener {
             binding.calendar.isVisible = true
             binding.calendar.tag = "backDate"
+        }
+        binding.allTickets.setOnClickListener {
+            findNavController().navigate(R.id.action_selectedCountryFragment_to_ticketsFragment)
         }
 
         binding.calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->

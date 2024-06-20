@@ -1,6 +1,7 @@
 package com.example.effectivemobiletestwork.avia.data.dto
 
 import com.example.effectivemobiletestwork.avia.domain.model.Offer
+import com.example.effectivemobiletestwork.avia.domain.model.Ticket
 import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import java.text.NumberFormat
 
@@ -18,8 +19,22 @@ class DTOToDataMappers {
         }
     }
 
-    fun ticketsDTOToTickets(tickets: List<TicketDTO>): List<TicketDTO> {
-        return tickets
+    fun ticketsDTOToTickets(tickets: List<TicketDTO>): List<Ticket> {
+        return tickets.map {
+            val newTickets = Ticket(
+                id = it.id,
+                price = getPriceString(it.price.value.toInt()),
+                arrivalAirport = it.arrival.airport,
+                arrivalDate = it.arrival.date,
+                departureDate = it.departure.date,
+                departureAirport = it.departure.airport,
+                timeInFlight = "СДЕЛАТЬ",
+                options = "СДЕЛАТЬ",
+                badge = it.badge,
+                transfer = it.hasTransfer
+            )
+            newTickets
+        }
     }
 
     fun ticketsOffersDTOToTicketsOffers(ticketOfferDTOS: List<TicketOffersDTO>) : List<TicketsOffer> {
