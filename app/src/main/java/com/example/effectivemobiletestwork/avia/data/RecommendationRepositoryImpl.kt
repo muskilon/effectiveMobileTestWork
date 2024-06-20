@@ -1,7 +1,7 @@
 package com.example.effectivemobiletestwork.avia.data
 
 import com.example.effectivemobiletestwork.avia.data.DTO.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.domain.Offer
+import com.example.effectivemobiletestwork.avia.domain.model.Offer
 import com.example.effectivemobiletestwork.avia.domain.RecommendationRepository
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers

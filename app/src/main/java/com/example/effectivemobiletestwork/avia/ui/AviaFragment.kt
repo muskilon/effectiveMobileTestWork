@@ -6,13 +6,20 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.databinding.FragmentAviaBinding
 import com.example.effectivemobiletestwork.root.RootActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AviaFragment : Fragment() {
@@ -20,6 +27,7 @@ class AviaFragment : Fragment() {
     private val binding get() = _binding!!
     private val aviaAdapter = AviaAdapter()
     private var bottomSheetBehavior = BottomSheetBehavior<View>()
+    private var transitionJob: Job? = null
     private val viewModel by viewModel<AviaViewModel>()
 
     override fun onCreateView(
@@ -96,21 +104,39 @@ class AviaFragment : Fragment() {
         }
 
         viewModel.getTickets()
-        viewModel.getTicketsOffers()
     }
 
     private fun getTextWatcher() = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            transitionDebounce(s.toString())
 
         }
 
         override fun afterTextChanged(s: Editable?) = Unit
     }
+    fun transitionDebounce(text: String) {
+        if (text.isEmpty()) {
+            transitionJob?.cancel()
+        } else {
+            transitionJob?.cancel()
+            transitionJob = lifecycleScope.launch {
+                delay(TRANSITION_DEBOUNCE_DELAY)
+                setFragmentResult(
+                    "directions",
+                    bundleOf("from" to text)
+                )
+                findNavController().navigate(R.id.action_aviaFragment_to_selectedCountryFragment)
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    companion object {
+        private const val TRANSITION_DEBOUNCE_DELAY = 1000L
     }
 }

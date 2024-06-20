@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effectivemobiletestwork.avia.domain.Offer
+import com.example.effectivemobiletestwork.avia.domain.model.Offer
 import com.example.effectivemobiletestwork.avia.domain.RecommendationsInteractor
 import com.example.effectivemobiletestwork.avia.domain.TicketsInteractor
 import com.example.effectivemobiletestwork.domain.Resource
@@ -37,14 +37,6 @@ class AviaViewModel(
         viewModelScope.launch {
             ticketsInteractor.getTickets().collect {tickets ->
                 Log.d("TAG", tickets.toString())
-            }
-        }
-    }
-
-    fun getTicketsOffers() {
-        viewModelScope.launch {
-            ticketsInteractor.getTicketsOffers().collect {ticketsOffers ->
-                Log.d("TAG", ticketsOffers.toString())
             }
         }
     }

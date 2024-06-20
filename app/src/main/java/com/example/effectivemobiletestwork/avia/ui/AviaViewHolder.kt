@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.app.App
-import com.example.effectivemobiletestwork.avia.domain.Offer
+import com.example.effectivemobiletestwork.avia.domain.model.Offer
 import com.example.effectivemobiletestwork.databinding.ItemRecommendationsBinding
 import java.text.NumberFormat
 

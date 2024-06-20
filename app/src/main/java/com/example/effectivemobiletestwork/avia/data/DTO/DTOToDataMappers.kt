@@ -1,6 +1,7 @@
 package com.example.effectivemobiletestwork.avia.data.DTO
 
-import com.example.effectivemobiletestwork.avia.domain.Offer
+import com.example.effectivemobiletestwork.avia.domain.model.Offer
+import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 
 class DTOToDataMappers {
     fun recommendationsDTOToMainRecommendations(offers: List<OfferDTO>): List<Offer>{
@@ -20,7 +21,15 @@ class DTOToDataMappers {
         return tickets
     }
 
-    fun ticketsOffersDTOToTicketsOffers(ticketsOffers: List<TicketsOffers>) : List<TicketsOffers> {
-        return ticketsOffers
+    fun ticketsOffersDTOToTicketsOffers(ticketOfferDTOS: List<TicketOffersDTO>) : List<TicketsOffer> {
+        return ticketOfferDTOS.map {
+            val newOffers = TicketsOffer(
+                id = it.id,
+                title = it.title,
+                price = it.price.value,
+                timeRange = it.timeRange.toString()
+            )
+            newOffers
+        }
     }
 }

@@ -1,23 +1,24 @@
 package com.example.effectivemobiletestwork.avia.data
 
 import com.example.effectivemobiletestwork.avia.data.DTO.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.data.DTO.Ticket
-import com.example.effectivemobiletestwork.avia.domain.TicketsRepository
+import com.example.effectivemobiletestwork.avia.data.DTO.TicketOffersDTO
+import com.example.effectivemobiletestwork.avia.domain.TicketsOffersRepository
+import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class TicketsRepositoryImpl(
+class TicketsOffersRepositoryImpl(
 private val networkClient: NetworkClient,
 private val mapper: DTOToDataMappers
-) : TicketsRepository {
-    override suspend fun getTickets(): Flow<Resource<List<Ticket>>> = flow {
-        when (val response = networkClient.getTickets()) {
+) : TicketsOffersRepository {
+    override suspend fun getTicketsOffers(): Flow<Resource<List<TicketsOffer>>> = flow {
+        when (val response = networkClient.getTicketsOffers()) {
             is Resource.Data -> {
                 with(response) {
-                    val data = mapper.ticketsDTOToTickets(this.value.tickets)
+                    val data = mapper.ticketsOffersDTOToTicketsOffers(this.value.ticketsOffers)
                     emit(Resource.Data(data))
                 }
             }

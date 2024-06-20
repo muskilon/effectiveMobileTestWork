@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.domain
+package com.example.effectivemobiletestwork.avia.domain.model
 
 data class Offer(
     val id: String,
