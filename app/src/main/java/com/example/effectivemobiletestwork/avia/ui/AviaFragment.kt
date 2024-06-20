@@ -103,7 +103,6 @@ class AviaFragment : Fragment() {
             aviaAdapter.setData(offers)
         }
 
-        viewModel.getTickets()
     }
 
     private fun getTextWatcher() = object : TextWatcher {

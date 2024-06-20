@@ -37,5 +37,14 @@
         android:id="@+id/selectedCountryFragment"
         android:name="com.example.effectivemobiletestwork.avia.ui.SelectedCountryFragment"
         android:label="fragment_selected_country"
-        tools:layout="@layout/fragment_selected_country" />
+        tools:layout="@layout/fragment_selected_country" >
+        <action
+            android:id="@+id/action_selectedCountryFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.TicketsFragment"
+        android:label="fragment_tickets"
+        tools:layout="@layout/fragment_tickets" />
 </navigation>

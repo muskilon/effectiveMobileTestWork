@@ -1,6 +1,5 @@
 package com.example.effectivemobiletestwork.avia.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +8,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
-import com.example.effectivemobiletestwork.R
-import com.example.effectivemobiletestwork.app.App
 import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -104,12 +101,6 @@ class SelectedCountryFragment : Fragment() {
             binding.from.text = bundle.getString("from")
             binding.to.text = bundle.getString("to")
         }
-    }
-    @SuppressLint("DiscouragedApi")
-    private fun getDrawableResourceByName(name: String): Int {
-        val packageName = App.getAppResources().getResourcePackageName(R.drawable.em_1)
-        val resId = App.getAppResources().getIdentifier(name, "drawable", packageName)
-        return resId
     }
 
     override fun onDestroyView() {

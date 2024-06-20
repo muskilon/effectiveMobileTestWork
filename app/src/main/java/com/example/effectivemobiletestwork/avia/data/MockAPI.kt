@@ -1,8 +1,8 @@
 package com.example.effectivemobiletestwork.avia.data
 
-import com.example.effectivemobiletestwork.avia.data.DTO.MainRecommendationDTO
-import com.example.effectivemobiletestwork.avia.data.DTO.TicketsDTO
-import com.example.effectivemobiletestwork.avia.data.DTO.TicketsOffersDTO
+import com.example.effectivemobiletestwork.avia.data.dto.MainRecommendationDTO
+import com.example.effectivemobiletestwork.avia.data.dto.TicketsDTO
+import com.example.effectivemobiletestwork.avia.data.dto.TicketsOffersDTO
 import retrofit2.Response
 import retrofit2.http.GET
 

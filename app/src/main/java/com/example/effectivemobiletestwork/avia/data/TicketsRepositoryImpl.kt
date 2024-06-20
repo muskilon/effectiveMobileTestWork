@@ -1,7 +1,7 @@
 package com.example.effectivemobiletestwork.avia.data
 
-import com.example.effectivemobiletestwork.avia.data.DTO.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.data.DTO.Ticket
+import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
+import com.example.effectivemobiletestwork.avia.data.dto.TicketDTO
 import com.example.effectivemobiletestwork.avia.domain.TicketsRepository
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ class TicketsRepositoryImpl(
 private val networkClient: NetworkClient,
 private val mapper: DTOToDataMappers
 ) : TicketsRepository {
-    override suspend fun getTickets(): Flow<Resource<List<Ticket>>> = flow {
+    override suspend fun getTickets(): Flow<Resource<List<TicketDTO>>> = flow {
         when (val response = networkClient.getTickets()) {
             is Resource.Data -> {
                 with(response) {

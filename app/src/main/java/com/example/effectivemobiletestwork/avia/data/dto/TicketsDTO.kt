@@ -1,9 +1,9 @@
-package com.example.effectivemobiletestwork.avia.data.DTO
+package com.example.effectivemobiletestwork.avia.data.dto
 
 import com.google.gson.annotations.SerializedName
 
 data class TicketsDTO(
-    val tickets: List<Ticket>
+    val tickets: List<TicketDTO>
 )
 
 data class Departure(
@@ -26,9 +26,9 @@ data class HandLuggage (
     val hasHandLuggage: Boolean,
     val size: String
 )
-data class Ticket (
+data class TicketDTO (
     val id: Int,
-    val badge: String,
+    val badge: String?,
     val price: Price,
     @SerializedName("provider_name")
     val providerName: String,

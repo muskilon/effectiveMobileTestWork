@@ -1,5 +1,5 @@
 package com.example.effectivemobiletestwork.di
-import com.example.effectivemobiletestwork.avia.data.DTO.DTOToDataMappers
+import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
 import com.example.effectivemobiletestwork.avia.data.MockAPI
 import com.example.effectivemobiletestwork.avia.data.NetworkClient
 import com.example.effectivemobiletestwork.avia.data.RetrofitNetworkClient

@@ -1,6 +1,5 @@
 package com.example.effectivemobiletestwork.avia.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,7 +24,6 @@ class SelectedCountryViewModel(
                     is Resource.ConnectionError -> Unit
                     is Resource.NotFound -> Unit
                 }
-                Log.d("TAG_TICKETS_OFFERS", offers.toString())
             }
         }
     }

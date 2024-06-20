@@ -4,9 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
-import com.example.effectivemobiletestwork.avia.data.DTO.MainRecommendationDTO
-import com.example.effectivemobiletestwork.avia.data.DTO.TicketsDTO
-import com.example.effectivemobiletestwork.avia.data.DTO.TicketsOffersDTO
+import com.example.effectivemobiletestwork.avia.data.dto.MainRecommendationDTO
+import com.example.effectivemobiletestwork.avia.data.dto.TicketsDTO
+import com.example.effectivemobiletestwork.avia.data.dto.TicketsOffersDTO
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.data.DTO
+package com.example.effectivemobiletestwork.avia.data.dto
 
 data class MainRecommendationDTO(
     val offers: List<OfferDTO>

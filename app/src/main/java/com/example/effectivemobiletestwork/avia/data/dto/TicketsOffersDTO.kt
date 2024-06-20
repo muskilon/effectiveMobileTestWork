@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.data.DTO
+package com.example.effectivemobiletestwork.avia.data.dto
 
 import com.google.gson.annotations.SerializedName
 

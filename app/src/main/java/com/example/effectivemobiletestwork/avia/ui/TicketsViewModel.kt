@@ -4,22 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effectivemobiletestwork.avia.domain.RecommendationsInteractor
-import com.example.effectivemobiletestwork.avia.domain.model.Offer
+import com.example.effectivemobiletestwork.avia.data.dto.TicketDTO
+import com.example.effectivemobiletestwork.avia.domain.TicketsInteractor
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.launch
 
-class AviaViewModel(
-    private val recommendationsInteractor: RecommendationsInteractor,
+class TicketsViewModel(
+    private val ticketsInteractor: TicketsInteractor
 ) : ViewModel() {
 
-    private val offersLiveData = MutableLiveData<List<Offer>>()
+    private val offersLiveData = MutableLiveData<List<TicketDTO>>()
 
-    fun observeOffers(): LiveData<List<Offer>> = offersLiveData
+    fun observeTickets(): LiveData<List<TicketDTO>> = offersLiveData
 
-    fun getRecommendations() {
+    fun getTickets() {
         viewModelScope.launch {
-            recommendationsInteractor.getRecommendations().collect { offers ->
+            ticketsInteractor.getTickets().collect { offers ->
                 when (offers) {
                     is Resource.Data -> offersLiveData.postValue(offers.value)
                     is Resource.ConnectionError -> Unit
