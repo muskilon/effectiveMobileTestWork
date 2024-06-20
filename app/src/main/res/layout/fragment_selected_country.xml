@@ -249,7 +249,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginEnd="14dp"
         android:fontFamily="@font/sf_regular_italic"
-        android:textColor="@color/blue"
+        android:textColor="@color/tab_blue"
         android:textSize="14sp"
         app:drawableEndCompat="@drawable/arrow_right1"
         android:drawablePadding="5dp"
@@ -287,7 +287,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="120dp"
         android:background="@drawable/circle_flights"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/tab_blue"
         app:layout_constraintStart_toStartOf="@id/flightBoard"
         app:layout_constraintTop_toTopOf="@id/flightBoard" />
 
@@ -314,7 +314,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginEnd="14dp"
         android:fontFamily="@font/sf_regular_italic"
-        android:textColor="@color/blue"
+        android:textColor="@color/tab_blue"
         android:textSize="14sp"
         app:drawableEndCompat="@drawable/arrow_right1"
         android:drawablePadding="5dp"
@@ -390,7 +390,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginEnd="14dp"
         android:fontFamily="@font/sf_regular_italic"
-        android:textColor="@color/blue"
+        android:textColor="@color/tab_blue"
         android:textSize="14sp"
         app:drawableEndCompat="@drawable/arrow_right1"
         android:drawablePadding="5dp"
@@ -430,7 +430,54 @@
         android:text="@string/show_all_tickets"
         android:fontFamily="@font/sf_semibold"
         android:textSize="16sp"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/tab_blue"/>
+    
+    <TextView
+        android:id="@+id/allTickets"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/rectangle_round_8"
+        android:backgroundTint="@color/tab_blue"
+        android:text="@string/look_at_all_tickets"
+        android:gravity="center"
+        android:fontFamily="@font/sf_regular_italic"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/flightBoard"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        />
+
+    <TextView
+        android:id="@+id/subscribe"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
+        android:paddingStart="16dp"
+        android:drawablePadding="8dp"
+        android:background="@drawable/rectangle_round_8"
+        android:backgroundTint="@color/grey_9"
+        android:text="@string/subscribe_to_price"
+        android:gravity="center_vertical"
+        android:fontFamily="@font/sf_regular"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:drawableStartCompat="@drawable/tab_subscriptions"
+        app:drawableTint="@color/tab_blue"
+        app:layout_constraintTop_toBottomOf="@id/allTickets"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        />
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/subscribe_switcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="@id/subscribe"
+        app:layout_constraintTop_toTopOf="@id/subscribe"
+        app:layout_constraintBottom_toBottomOf="@id/subscribe"
+        />
 
 
 
