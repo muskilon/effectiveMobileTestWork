@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemPaddingTop">8dp</item>
         <item name="itemPaddingBottom">6dp</item>
@@ -18,18 +19,22 @@
         </item>
     </style>
 
-        <style name="ActiveItemTextAppearance">
-            <item name="android:textStyle">normal</item>
-            <item name="android:fontFamily">@font/sf_regular</item>
-            <item name="android:textSize">10sp</item>
-            <item name="android:lineSpacingMultiplier">0</item>
-        </style>
+    <style name="ActiveItemTextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/sf_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingMultiplier">0</item>
+    </style>
 
-        <style name="InactiveItemTextAppearance">
-            <item name="android:textStyle">normal</item>
-            <item name="android:fontFamily">@font/sf_regular</item>
-            <item name="android:textSize">10sp</item>
-            <item name="android:lineSpacingMultiplier">0</item>
+    <style name="InactiveItemTextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/sf_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingMultiplier">0</item>
+    </style>
 
-        </style>
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
 </resources>

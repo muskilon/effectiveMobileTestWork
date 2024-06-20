@@ -28,7 +28,6 @@ class AviaViewModel(
                     is Resource.ConnectionError -> Unit
                     is Resource.NotFound -> Unit
                 }
-                Log.d("TAG", offers.toString())
             }
         }
     }

@@ -113,6 +113,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/backDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
@@ -422,17 +423,17 @@
         app:layout_constraintTop_toBottomOf="@id/timeTable3"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/flightBoard"
-        app:layout_constraintStart_toStartOf="@id/flightBoard"
-        app:layout_constraintEnd_toEndOf="@id/flightBoard"
-        android:text="@string/show_all_tickets"
-        android:fontFamily="@font/sf_semibold"
-        android:textSize="16sp"
-        android:textColor="@color/tab_blue"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/flightBoard"-->
+<!--        app:layout_constraintStart_toStartOf="@id/flightBoard"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/flightBoard"-->
+<!--        android:text="@string/show_all_tickets"-->
+<!--        android:fontFamily="@font/sf_semibold"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textColor="@color/tab_blue"/>-->
     
     <TextView
         android:id="@+id/allTickets"
@@ -485,9 +486,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:tag="oneWay"
+        android:background="@color/grey_9"
+        android:theme="@style/CalenderViewCustom"
         app:layout_constraintTop_toBottomOf="@id/filters"
         app:layout_constraintStart_toStartOf="@id/start_guideline"
         app:layout_constraintEnd_toEndOf="@id/end_guideline"
+        tools:visibility="gone"
         />
 
 

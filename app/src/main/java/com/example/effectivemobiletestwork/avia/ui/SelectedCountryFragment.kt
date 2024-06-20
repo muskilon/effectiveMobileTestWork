@@ -16,6 +16,7 @@ import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class SelectedCountryFragment : Fragment() {
@@ -42,9 +43,8 @@ class SelectedCountryFragment : Fragment() {
         binding.arrowBack.setOnClickListener {
             findNavController().navigateUp()
         }
-        val formatter = SimpleDateFormat("dd MMM, EEE", Locale.getDefault())
-        val current = formatter.format(Calendar.getInstance().time)
-        binding.date.text = current.replace(".", "")
+
+        binding.date.text = getDate(Calendar.getInstance().time)
 
         binding.changeDirection.setOnClickListener {
             val temp = binding.from.text
@@ -54,14 +54,21 @@ class SelectedCountryFragment : Fragment() {
 
         binding.date.setOnClickListener {
             binding.calendar.isVisible = true
+            binding.calendar.tag = "departureDate"
+        }
+        binding.backDate.setOnClickListener {
+            binding.calendar.isVisible = true
+            binding.calendar.tag = "backDate"
         }
 
         binding.calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
-
-            val calender: Calendar = Calendar.getInstance()
+            val calender = Calendar.getInstance()
             calender.set(year, month, dayOfMonth)
-            formatter.format(calender.time)
-            binding.date.text = formatter.format(calender.time).replace(".", "")
+            if (binding.calendar.tag == "departureDate") binding.date.text = getDate(calender.time)
+            else {
+                binding.backDate.text = getDate(calender.time)
+                binding.backDate.setCompoundDrawables(null, null, null, null)
+            }
             binding.calendar.isVisible = false
         }
 
@@ -70,6 +77,12 @@ class SelectedCountryFragment : Fragment() {
             processOffers(offers)
         }
 
+    }
+
+    private fun getDate(date: Date): String {
+        val formatter = SimpleDateFormat("dd MMM, EEE", Locale.getDefault())
+        val formatedDate = formatter.format(date).replace(".", "")
+        return formatedDate
     }
 
     private fun processOffers(offers: List<TicketsOffer>) {
