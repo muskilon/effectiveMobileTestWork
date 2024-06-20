@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,9 @@ import com.example.effectivemobiletestwork.app.App
 import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class SelectedCountryFragment : Fragment() {
     private var _binding: FragmentSelectedCountryBinding? = null
@@ -31,10 +35,34 @@ class SelectedCountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.calendar.isVisible = false
+
         setFragmentResultListener("directions") { _, bundle -> processBundle(bundle) }
 
         binding.arrowBack.setOnClickListener {
             findNavController().navigateUp()
+        }
+        val formatter = SimpleDateFormat("dd MMM, EEE", Locale.getDefault())
+        val current = formatter.format(Calendar.getInstance().time)
+        binding.date.text = current.replace(".", "")
+
+        binding.changeDirection.setOnClickListener {
+            val temp = binding.from.text
+            binding.from.text = binding.to.text
+            binding.to.text = temp
+        }
+
+        binding.date.setOnClickListener {
+            binding.calendar.isVisible = true
+        }
+
+        binding.calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
+
+            val calender: Calendar = Calendar.getInstance()
+            calender.set(year, month, dayOfMonth)
+            formatter.format(calender.time)
+            binding.date.text = formatter.format(calender.time).replace(".", "")
+            binding.calendar.isVisible = false
         }
 
         viewModel.getTicketsOffers()
