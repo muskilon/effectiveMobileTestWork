@@ -102,5 +102,92 @@
         app:layout_constraintTop_toTopOf="@id/searchBackplate"
         app:layout_constraintEnd_toEndOf="@id/searchBackplate" />
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/searchBackplate"
+        app:layout_constraintStart_toStartOf="@id/start_guideline">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/plus"
+                android:drawablePadding="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="1"
+                android:fontFamily="@font/sf_regular_italic"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="@string/back"
+                android:background="@drawable/rectangle_round_50"
+                android:backgroundTint="@color/grey_2"
+                android:layout_marginTop="13dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/sf_regular_italic"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="24 фев, сб"
+                android:maxLines="1"
+                android:background="@drawable/rectangle_round_50"
+                android:backgroundTint="@color/grey_2"
+                android:layout_marginTop="13dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/people"
+                android:drawablePadding="11dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/sf_regular_italic"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="@string/econom"
+                android:maxLines="1"
+                android:background="@drawable/rectangle_round_50"
+                android:backgroundTint="@color/grey_2"
+                android:layout_marginTop="13dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/filter"
+                android:drawablePadding="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/sf_regular_italic"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="@string/filter"
+                android:maxLines="1"
+                android:background="@drawable/rectangle_round_50"
+                android:backgroundTint="@color/grey_2"
+                android:layout_marginTop="13dp"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="10dp"
+                />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

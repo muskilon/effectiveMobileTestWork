@@ -18,4 +18,7 @@
     <string name="popular_route">Популярное направление</string>
     <string name="phuket">Пхукет</string>
     <string name="sochi">Сочи</string>
+    <string name="back">обратно</string>
+    <string name="econom">1,эконом</string>
+    <string name="filter">фильтр</string>
 </resources>
