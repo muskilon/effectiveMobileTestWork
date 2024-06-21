@@ -7,7 +7,7 @@ import android.util.Log
 import com.example.effectivemobiletestwork.avia.data.dto.MainRecommendationDTO
 import com.example.effectivemobiletestwork.avia.data.dto.TicketsDTO
 import com.example.effectivemobiletestwork.avia.data.dto.TicketsOffersDTO
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -16,49 +16,49 @@ class RetrofitNetworkClient(
     private val context: Context,
     private val mockAPI: MockAPI
 ) : NetworkClient {
-    override suspend fun getRecommendations(): Resource<MainRecommendationDTO> {
-        var recommedations: Resource<MainRecommendationDTO>
-        if (!isConnected()) return Resource.ConnectionError(OFFLINE)
+    override suspend fun getRecommendations(): com.example.domain.Resource<MainRecommendationDTO> {
+        var recommedations: com.example.domain.Resource<MainRecommendationDTO>
+        if (!isConnected()) return com.example.domain.Resource.ConnectionError(OFFLINE)
         withContext(Dispatchers.IO) {
             recommedations = try {
                 mockAPI.getRecommendations().body()?.let {
-                    Resource.Data(it)
-                } ?: Resource.NotFound(NOT_FOUND)
+                    com.example.domain.Resource.Data(it)
+                } ?: com.example.domain.Resource.NotFound(NOT_FOUND)
             } catch (ex: IOException) {
                 Log.e(REQUEST_ERROR_TAG, ex.toString())
-                Resource.ConnectionError(REQUEST_ERROR_TAG)
+                com.example.domain.Resource.ConnectionError(REQUEST_ERROR_TAG)
             }
         }
         return recommedations
     }
 
-    override suspend fun getTicketsOffers(): Resource<TicketsOffersDTO> {
-        var ticketsOffers: Resource<TicketsOffersDTO>
-        if (!isConnected()) return Resource.ConnectionError(OFFLINE)
+    override suspend fun getTicketsOffers(): com.example.domain.Resource<TicketsOffersDTO> {
+        var ticketsOffers: com.example.domain.Resource<TicketsOffersDTO>
+        if (!isConnected()) return com.example.domain.Resource.ConnectionError(OFFLINE)
         withContext(Dispatchers.IO) {
             ticketsOffers = try {
                 mockAPI.getTicketsOffers().body()?.let {
-                    Resource.Data(it)
-                } ?: Resource.NotFound(NOT_FOUND)
+                    com.example.domain.Resource.Data(it)
+                } ?: com.example.domain.Resource.NotFound(NOT_FOUND)
             } catch (ex: IOException) {
                 Log.e(REQUEST_ERROR_TAG, ex.toString())
-                Resource.ConnectionError(REQUEST_ERROR_TAG)
+                com.example.domain.Resource.ConnectionError(REQUEST_ERROR_TAG)
             }
         }
         return ticketsOffers
     }
 
-    override suspend fun getTickets(): Resource<TicketsDTO> {
-        var tickets: Resource<TicketsDTO>
-        if (!isConnected()) return Resource.ConnectionError(OFFLINE)
+    override suspend fun getTickets(): com.example.domain.Resource<TicketsDTO> {
+        var tickets: com.example.domain.Resource<TicketsDTO>
+        if (!isConnected()) return com.example.domain.Resource.ConnectionError(OFFLINE)
         withContext(Dispatchers.IO) {
             tickets = try {
                 mockAPI.getTickets().body()?.let {
-                    Resource.Data(it)
-                } ?: Resource.NotFound(NOT_FOUND)
+                    com.example.domain.Resource.Data(it)
+                } ?: com.example.domain.Resource.NotFound(NOT_FOUND)
             } catch (ex: IOException) {
                 Log.e(REQUEST_ERROR_TAG, ex.toString())
-                Resource.ConnectionError(REQUEST_ERROR_TAG)
+                com.example.domain.Resource.ConnectionError(REQUEST_ERROR_TAG)
             }
         }
         return tickets

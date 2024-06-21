@@ -1,8 +1,8 @@
 package com.example.effectivemobiletestwork.avia.data.dto
 
-import com.example.effectivemobiletestwork.avia.domain.model.Offer
-import com.example.effectivemobiletestwork.avia.domain.model.Ticket
-import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
+import com.example.domain.avia.model.Offer
+import com.example.domain.avia.model.Ticket
+import com.example.domain.avia.model.TicketsOffer
 import java.text.NumberFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat

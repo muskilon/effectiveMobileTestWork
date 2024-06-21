@@ -11,7 +11,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.effectivemobiletestwork.R
-import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
+import com.example.domain.avia.model.TicketsOffer
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat

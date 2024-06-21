@@ -2,9 +2,9 @@ package com.example.effectivemobiletestwork.avia.data
 
 import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
 import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
-import com.example.effectivemobiletestwork.avia.domain.model.Offer
-import com.example.effectivemobiletestwork.avia.domain.repository.RecommendationRepository
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.avia.model.Offer
+import com.example.domain.avia.repository.RecommendationRepository
+import com.example.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,18 +14,18 @@ class RecommendationRepositoryImpl(
     private val networkClient: NetworkClient,
     private val mapper: DTOToDataMappers
     ) : RecommendationRepository {
-        override suspend fun getRecommendations(): Flow<Resource<List<Offer>>> = flow {
+        override suspend fun getRecommendations(): Flow<com.example.domain.Resource<List<Offer>>> = flow {
             when (val response = networkClient.getRecommendations()) {
-                is Resource.Data -> {
+                is com.example.domain.Resource.Data -> {
                     with(response) {
                         val data = mapper.recommendationsDTOToMainRecommendations(this.value.offers)
-                        emit(Resource.Data(data))
+                        emit(com.example.domain.Resource.Data(data))
                     }
                 }
 
-                is Resource.NotFound -> emit(Resource.NotFound(response.message))
-                is Resource.ConnectionError -> {
-                    emit(Resource.ConnectionError(response.message))
+                is com.example.domain.Resource.NotFound -> emit(com.example.domain.Resource.NotFound(response.message))
+                is com.example.domain.Resource.ConnectionError -> {
+                    emit(com.example.domain.Resource.ConnectionError(response.message))
                 }
             }
         }.flowOn(Dispatchers.IO)

@@ -2,9 +2,9 @@ package com.example.effectivemobiletestwork.avia.data
 
 import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
 import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
-import com.example.effectivemobiletestwork.avia.domain.repository.TicketsRepository
-import com.example.effectivemobiletestwork.avia.domain.model.Ticket
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.avia.repository.TicketsRepository
+import com.example.domain.avia.model.Ticket
+import com.example.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,17 +14,17 @@ class TicketsRepositoryImpl(
     private val networkClient: NetworkClient,
     private val mapper: DTOToDataMappers
 ) : TicketsRepository {
-    override suspend fun getTickets(): Flow<Resource<List<Ticket>>> = flow {
+    override suspend fun getTickets(): Flow<com.example.domain.Resource<List<Ticket>>> = flow {
         when (val response = networkClient.getTickets()) {
-            is Resource.Data -> {
+            is com.example.domain.Resource.Data -> {
                 with(response) {
                     val data = mapper.ticketsDTOToTickets(this.value.tickets)
-                    emit(Resource.Data(data))
+                    emit(com.example.domain.Resource.Data(data))
                 }
             }
-            is Resource.NotFound -> emit(Resource.NotFound(response.message))
-            is Resource.ConnectionError -> {
-                emit(Resource.ConnectionError(response.message))
+            is com.example.domain.Resource.NotFound -> emit(com.example.domain.Resource.NotFound(response.message))
+            is com.example.domain.Resource.ConnectionError -> {
+                emit(com.example.domain.Resource.ConnectionError(response.message))
             }
         }
     }.flowOn(Dispatchers.IO)

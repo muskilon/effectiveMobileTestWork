@@ -1,6 +1,6 @@
 package com.example.effectivemobiletestwork.avia.data
 
-import com.example.effectivemobiletestwork.avia.domain.repository.SharedRepository
+import com.example.domain.avia.repository.SharedRepository
 
 class SharedRepositoryImpl(
     private val sharedStorage: SharedStorage

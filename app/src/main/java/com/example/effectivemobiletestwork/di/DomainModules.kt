@@ -4,18 +4,18 @@ import com.example.effectivemobiletestwork.avia.data.RecommendationRepositoryImp
 import com.example.effectivemobiletestwork.avia.data.SharedRepositoryImpl
 import com.example.effectivemobiletestwork.avia.data.TicketsOffersRepositoryImpl
 import com.example.effectivemobiletestwork.avia.data.TicketsRepositoryImpl
-import com.example.effectivemobiletestwork.avia.domain.DepartureCityInteractor
-import com.example.effectivemobiletestwork.avia.domain.repository.RecommendationRepository
-import com.example.effectivemobiletestwork.avia.domain.RecommendationsInteractor
-import com.example.effectivemobiletestwork.avia.domain.impl.RecommendationsInteractorImpl
-import com.example.effectivemobiletestwork.avia.domain.TicketsInteractor
-import com.example.effectivemobiletestwork.avia.domain.impl.TicketsInteractorImpl
-import com.example.effectivemobiletestwork.avia.domain.TicketsOffersInteractor
-import com.example.effectivemobiletestwork.avia.domain.impl.DepartureCityInteractorImpl
-import com.example.effectivemobiletestwork.avia.domain.impl.TicketsOffersInteractorImpl
-import com.example.effectivemobiletestwork.avia.domain.repository.SharedRepository
-import com.example.effectivemobiletestwork.avia.domain.repository.TicketsOffersRepository
-import com.example.effectivemobiletestwork.avia.domain.repository.TicketsRepository
+import com.example.domain.avia.DepartureCityInteractor
+import com.example.domain.avia.repository.RecommendationRepository
+import com.example.domain.avia.RecommendationsInteractor
+import com.example.domain.avia.impl.RecommendationsInteractorImpl
+import com.example.domain.avia.TicketsInteractor
+import com.example.domain.avia.impl.TicketsInteractorImpl
+import com.example.domain.avia.TicketsOffersInteractor
+import com.example.domain.avia.impl.DepartureCityInteractorImpl
+import com.example.domain.avia.impl.TicketsOffersInteractorImpl
+import com.example.domain.avia.repository.SharedRepository
+import com.example.domain.avia.repository.TicketsOffersRepository
+import com.example.domain.avia.repository.TicketsRepository
 import org.koin.dsl.module
 
 val domainModules = module {

@@ -3,12 +3,12 @@ package com.example.effectivemobiletestwork.avia.data.network
 import com.example.effectivemobiletestwork.avia.data.dto.MainRecommendationDTO
 import com.example.effectivemobiletestwork.avia.data.dto.TicketsDTO
 import com.example.effectivemobiletestwork.avia.data.dto.TicketsOffersDTO
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.Resource
 
 interface NetworkClient {
-    suspend fun getRecommendations(): Resource<MainRecommendationDTO>
+    suspend fun getRecommendations(): com.example.domain.Resource<MainRecommendationDTO>
 
-    suspend fun getTicketsOffers(): Resource<TicketsOffersDTO>
+    suspend fun getTicketsOffers(): com.example.domain.Resource<TicketsOffersDTO>
 
-    suspend fun getTickets(): Resource<TicketsDTO>
+    suspend fun getTickets(): com.example.domain.Resource<TicketsDTO>
 }
