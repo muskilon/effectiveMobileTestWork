@@ -25,4 +25,5 @@
     <string name="show_all_tickets">Показать все</string>
     <string name="look_at_all_tickets">Посмотреть все билеты</string>
     <string name="subscribe_to_price">Подписка на цену</string>
+    <string name="passengers">, 1 пассажир</string>
 </resources>

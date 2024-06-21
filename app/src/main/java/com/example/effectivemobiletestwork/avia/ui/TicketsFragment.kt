@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import com.example.domain.Key
+import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.databinding.FragmentTicketsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +30,7 @@ class TicketsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setFragmentResultListener("directionsTickets") { _, bundle ->
+        setFragmentResultListener(Key.DIRECTIONS_TICKETS) { _, bundle ->
             processBundle(bundle)
         }
         binding.arrowBack.setOnClickListener {
@@ -45,9 +47,9 @@ class TicketsFragment : Fragment() {
     }
     private fun processBundle(bundle: Bundle) {
         if(!bundle.isEmpty) {
-            val direction = bundle.getString("from") + "-" + bundle.getString("to")
+            val direction = bundle.getString(Key.FROM) + "-" + bundle.getString(Key.TO)
             binding.direction.text = direction
-            val details = bundle.getString("departureDate") + ", 1 пассажир"
+            val details = bundle.getString(Key.DEPARTURE_DATE) + getString(R.string.passengers)
             binding.details.text = details
         }
     }

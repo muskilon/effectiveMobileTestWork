@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import com.example.domain.Key
 import com.example.effectivemobiletestwork.R
 import com.example.domain.avia.model.TicketsOffer
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
@@ -39,7 +40,7 @@ class SelectedCountryFragment : Fragment() {
 
         binding.calendar.isVisible = false
 
-        setFragmentResultListener("directions") { _, bundle -> processBundle(bundle) }
+        setFragmentResultListener(Key.DIRECTIONS) { _, bundle -> processBundle(bundle) }
 
         binding.arrowBack.setOnClickListener {
             findNavController().navigateUp()
@@ -58,7 +59,7 @@ class SelectedCountryFragment : Fragment() {
 
         binding.date.setOnClickListener {
             binding.calendar.isVisible = true
-            binding.calendar.tag = "departureDate"
+            binding.calendar.tag = Key.DEPARTURE_DATE
         }
         binding.backDate.setOnClickListener {
             binding.calendar.isVisible = true
@@ -66,8 +67,8 @@ class SelectedCountryFragment : Fragment() {
         }
         binding.allTickets.setOnClickListener {
             setFragmentResult(
-                "directionsTickets",
-                bundleOf("from" to binding.from.text, "to" to binding.to.text, "departureDate" to getDateForTickets(departureDate))
+                Key.DIRECTIONS_TICKETS,
+                bundleOf(Key.FROM to binding.from.text, Key.TO to binding.to.text, Key.DEPARTURE_DATE to getDateForTickets(departureDate))
             )
             findNavController().navigate(R.id.action_selectedCountryFragment_to_ticketsFragment)
         }
@@ -75,7 +76,7 @@ class SelectedCountryFragment : Fragment() {
         binding.calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val calender = Calendar.getInstance()
             calender.set(year, month, dayOfMonth)
-            if (binding.calendar.tag == "departureDate") {
+            if (binding.calendar.tag == Key.DEPARTURE_DATE) {
                 departureDate = calender.time
                 binding.date.text = getDateForFilter(calender.time)
             }
@@ -121,8 +122,8 @@ class SelectedCountryFragment : Fragment() {
 
     private fun processBundle(bundle: Bundle) {
         if(!bundle.isEmpty) {
-            binding.from.text = bundle.getString("from")
-            binding.to.text = bundle.getString("to")
+            binding.from.text = bundle.getString(Key.FROM)
+            binding.to.text = bundle.getString(Key.TO)
         }
     }
 

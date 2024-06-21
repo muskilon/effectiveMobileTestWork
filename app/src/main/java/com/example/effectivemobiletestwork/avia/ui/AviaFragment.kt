@@ -12,6 +12,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.Key
 import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.databinding.FragmentAviaBinding
 import com.example.effectivemobiletestwork.root.RootActivity
@@ -133,8 +134,8 @@ class AviaFragment : Fragment() {
             transitionJob = lifecycleScope.launch {
                 delay(TRANSITION_DEBOUNCE_DELAY)
                 setFragmentResult(
-                    "directions",
-                    bundleOf("from" to from, "to" to to)
+                    Key.DIRECTIONS,
+                    bundleOf(Key.FROM to from, Key.TO to to)
                 )
                 findNavController().navigate(R.id.action_aviaFragment_to_selectedCountryFragment)
             }
