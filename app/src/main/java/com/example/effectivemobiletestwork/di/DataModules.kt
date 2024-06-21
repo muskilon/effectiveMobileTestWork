@@ -15,8 +15,8 @@ val dataModules = module {
     single<NetworkClient> { RetrofitNetworkClient(androidContext(), mockAPI = get()) }
     single<MockAPI> {
         Retrofit.Builder()
-            .baseUrl("https://idkwid2.free.beeceptor.com/")
-//            .baseUrl("https://run.mocky.io/v3/")
+//            .baseUrl("https://idkwid2.free.beeceptor.com/")
+            .baseUrl("https://run.mocky.io/v3/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MockAPI::class.java)

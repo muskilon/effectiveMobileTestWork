@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="@id/searchBackplate"
         app:tint="@color/grey_5" />
 
-    <EditText
+    <TextView
         android:id="@+id/from"
         android:tag="from"
         style="@style/edit_text"

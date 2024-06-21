@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.effectivemobiletestwork.R
@@ -20,6 +22,7 @@ import java.util.Locale
 class SelectedCountryFragment : Fragment() {
     private var _binding: FragmentSelectedCountryBinding? = null
     private val binding get() = _binding!!
+    private var departureDate = Calendar.getInstance().time
 
     private val viewModel by viewModel<SelectedCountryViewModel>()
 
@@ -42,12 +45,15 @@ class SelectedCountryFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.date.text = getDate(Calendar.getInstance().time)
+        binding.date.text = getDateForFilter(departureDate)
 
         binding.changeDirection.setOnClickListener {
             val temp = binding.from.text
             binding.from.text = binding.to.text
             binding.to.text = temp
+        }
+        binding.clear.setOnClickListener {
+            binding.to.text = String()
         }
 
         binding.date.setOnClickListener {
@@ -59,15 +65,22 @@ class SelectedCountryFragment : Fragment() {
             binding.calendar.tag = "backDate"
         }
         binding.allTickets.setOnClickListener {
+            setFragmentResult(
+                "directionsTickets",
+                bundleOf("from" to binding.from.text, "to" to binding.to.text, "departureDate" to getDateForTickets(departureDate))
+            )
             findNavController().navigate(R.id.action_selectedCountryFragment_to_ticketsFragment)
         }
 
         binding.calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val calender = Calendar.getInstance()
             calender.set(year, month, dayOfMonth)
-            if (binding.calendar.tag == "departureDate") binding.date.text = getDate(calender.time)
+            if (binding.calendar.tag == "departureDate") {
+                departureDate = calender.time
+                binding.date.text = getDateForFilter(calender.time)
+            }
             else {
-                binding.backDate.text = getDate(calender.time)
+                binding.backDate.text = getDateForFilter(calender.time)
                 binding.backDate.setCompoundDrawables(null, null, null, null)
             }
             binding.calendar.isVisible = false
@@ -80,9 +93,15 @@ class SelectedCountryFragment : Fragment() {
 
     }
 
-    private fun getDate(date: Date): String {
+    private fun getDateForFilter(date: Date): String {
         val formatter = SimpleDateFormat("dd MMM, EEE", Locale.getDefault())
         val formatedDate = formatter.format(date).replace(".", "")
+        return formatedDate
+    }
+
+    private fun getDateForTickets(date: Date): String {
+        val formatter = SimpleDateFormat("dd MMMM", Locale.getDefault())
+        val formatedDate = formatter.format(date)
         return formatedDate
     }
 

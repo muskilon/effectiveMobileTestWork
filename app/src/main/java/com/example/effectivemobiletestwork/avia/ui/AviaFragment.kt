@@ -58,8 +58,6 @@ class AviaFragment : Fragment() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) = Unit
         })
 
-        binding.from.setText(viewModel.getDepartureCity())
-
         binding.to.onFocusChangeListener = View.OnFocusChangeListener { _, isFocus ->
             if(isFocus) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
@@ -81,7 +79,7 @@ class AviaFragment : Fragment() {
                 }
             )
             from.addTextChangedListener(getTextWatcher(from.tag.toString()))
-            include.from.addTextChangedListener(getTextWatcher(from.tag.toString()))
+            binding.from.setText(viewModel.getDepartureCity())
 
             to.addTextChangedListener(getTextWatcher(to.tag.toString()))
             include.to.addTextChangedListener(getTextWatcher(include.to.tag.toString()))
@@ -117,7 +115,7 @@ class AviaFragment : Fragment() {
             when(tag) {
                 "from" -> {
                     viewModel.setDepartureCity(s.toString())
-//                    binding.include.from.setText(s.toString())
+                    binding.include.from.text = s.toString()
                 }
                 "to" -> transitionDebounce(s.toString(), binding.from.text.toString())
                 else -> Unit
@@ -136,11 +134,16 @@ class AviaFragment : Fragment() {
                 delay(TRANSITION_DEBOUNCE_DELAY)
                 setFragmentResult(
                     "directions",
-                    bundleOf("from" to to)
+                    bundleOf("from" to from, "to" to to)
                 )
                 findNavController().navigate(R.id.action_aviaFragment_to_selectedCountryFragment)
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as RootActivity).hideNavigation(true)
     }
 
     override fun onDestroyView() {

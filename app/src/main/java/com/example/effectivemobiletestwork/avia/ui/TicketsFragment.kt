@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import com.example.effectivemobiletestwork.databinding.FragmentTicketsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,14 +28,25 @@ class TicketsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setFragmentResultListener("directionsTickets") { _, bundle ->
+            processBundle(bundle)
+        }
+
         binding.ticketsRecycler.adapter = ticketsAdapter
 
         viewModel.getTickets()
         viewModel.observeTickets().observe(viewLifecycleOwner) { tickets ->
             ticketsAdapter.setData(tickets)
-            Log.d("TAG", tickets.toString())
         }
 
+    }
+    private fun processBundle(bundle: Bundle) {
+        if(!bundle.isEmpty) {
+            val direction = bundle.getString("from") + "-" + bundle.getString("to")
+            binding.direction.text = direction
+            val details = bundle.getString("departureDate") + ", 1 пассажир"
+            binding.details.text = details
+        }
     }
 
     override fun onDestroyView() {
