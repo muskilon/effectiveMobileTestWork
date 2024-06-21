@@ -1,7 +1,8 @@
 package com.example.effectivemobiletestwork.avia.data
 
 import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.domain.TicketsOffersRepository
+import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
+import com.example.effectivemobiletestwork.avia.domain.repository.TicketsOffersRepository
 import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers
@@ -10,8 +11,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class TicketsOffersRepositoryImpl(
-private val networkClient: NetworkClient,
-private val mapper: DTOToDataMappers
+    private val networkClient: NetworkClient,
+    private val mapper: DTOToDataMappers
 ) : TicketsOffersRepository {
     override suspend fun getTicketsOffers(): Flow<Resource<List<TicketsOffer>>> = flow {
         when (val response = networkClient.getTicketsOffers()) {

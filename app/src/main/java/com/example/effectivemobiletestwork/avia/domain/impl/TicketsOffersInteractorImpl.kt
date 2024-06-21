@@ -1,5 +1,7 @@
-package com.example.effectivemobiletestwork.avia.domain
+package com.example.effectivemobiletestwork.avia.domain.impl
 
+import com.example.effectivemobiletestwork.avia.domain.TicketsOffersInteractor
+import com.example.effectivemobiletestwork.avia.domain.repository.TicketsOffersRepository
 import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.flow.Flow

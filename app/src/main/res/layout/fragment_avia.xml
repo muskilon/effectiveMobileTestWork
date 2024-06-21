@@ -81,6 +81,7 @@
 
     <EditText
         android:id="@+id/from"
+        android:tag="from"
         android:layout_marginTop="16dp"
         android:hint="@string/hint_for_from"
         android:translationZ="10dp"
@@ -102,6 +103,7 @@
 
     <EditText
         android:id="@+id/to"
+        android:tag="to"
         android:layout_marginTop="8dp"
         android:background="@null"
         android:hint="@string/hint_for_to"

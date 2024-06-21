@@ -58,6 +58,8 @@ class AviaFragment : Fragment() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) = Unit
         })
 
+        binding.from.setText(viewModel.getDepartureCity())
+
         binding.to.onFocusChangeListener = View.OnFocusChangeListener { _, isFocus ->
             if(isFocus) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
@@ -78,8 +80,11 @@ class AviaFragment : Fragment() {
                     isLastItemDecorated = false
                 }
             )
-            from.addTextChangedListener(getTextWatcher())
-            include.from.addTextChangedListener(getTextWatcher())
+            from.addTextChangedListener(getTextWatcher(from.tag.toString()))
+            include.from.addTextChangedListener(getTextWatcher(from.tag.toString()))
+
+            to.addTextChangedListener(getTextWatcher(to.tag.toString()))
+            include.to.addTextChangedListener(getTextWatcher(include.to.tag.toString()))
 
             include.everywhere.setOnClickListener {
                 include.to.setText(R.string.everywhere)
@@ -105,18 +110,25 @@ class AviaFragment : Fragment() {
 
     }
 
-    private fun getTextWatcher() = object : TextWatcher {
+    private fun getTextWatcher(tag: String) = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            transitionDebounce(s.toString())
+            when(tag) {
+                "from" -> {
+                    viewModel.setDepartureCity(s.toString())
+//                    binding.include.from.setText(s.toString())
+                }
+                "to" -> transitionDebounce(s.toString(), binding.from.text.toString())
+                else -> Unit
+            }
 
         }
 
         override fun afterTextChanged(s: Editable?) = Unit
     }
-    fun transitionDebounce(text: String) {
-        if (text.isEmpty()) {
+    fun transitionDebounce(to: String, from: String) {
+        if (to.isEmpty()) {
             transitionJob?.cancel()
         } else {
             transitionJob?.cancel()
@@ -124,7 +136,7 @@ class AviaFragment : Fragment() {
                 delay(TRANSITION_DEBOUNCE_DELAY)
                 setFragmentResult(
                     "directions",
-                    bundleOf("from" to text)
+                    bundleOf("from" to to)
                 )
                 findNavController().navigate(R.id.action_aviaFragment_to_selectedCountryFragment)
             }

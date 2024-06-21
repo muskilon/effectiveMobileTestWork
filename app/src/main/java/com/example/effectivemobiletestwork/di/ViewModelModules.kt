@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 val viewModelModules = module {
     viewModel {
-        AviaViewModel(recommendationsInteractor = get())
+        AviaViewModel(recommendationsInteractor = get(), departureCityInteractor = get())
     }
     viewModel {
         SelectedCountryViewModel(ticketsOffersInteractor = get())

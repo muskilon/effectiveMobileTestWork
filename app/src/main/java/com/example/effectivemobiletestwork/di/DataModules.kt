@@ -1,8 +1,10 @@
 package com.example.effectivemobiletestwork.di
+import android.content.Context
+import com.example.effectivemobiletestwork.avia.data.SharedStorage
 import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.data.MockAPI
-import com.example.effectivemobiletestwork.avia.data.NetworkClient
-import com.example.effectivemobiletestwork.avia.data.RetrofitNetworkClient
+import com.example.effectivemobiletestwork.avia.data.network.MockAPI
+import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
+import com.example.effectivemobiletestwork.avia.data.network.RetrofitNetworkClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -20,5 +22,13 @@ val dataModules = module {
             .create(MockAPI::class.java)
     }
 
+    single {
+        androidContext().getSharedPreferences(
+            SharedStorage.DEPARTURE_CITY,
+            Context.MODE_PRIVATE
+        )
+    }
+
     single { DTOToDataMappers() }
+    single { SharedStorage(sharedPreferences = get()) }
 }

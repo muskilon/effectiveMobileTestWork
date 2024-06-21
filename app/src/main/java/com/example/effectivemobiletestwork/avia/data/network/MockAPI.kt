@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.data
+package com.example.effectivemobiletestwork.avia.data.network
 
 import com.example.effectivemobiletestwork.avia.data.dto.MainRecommendationDTO
 import com.example.effectivemobiletestwork.avia.data.dto.TicketsDTO

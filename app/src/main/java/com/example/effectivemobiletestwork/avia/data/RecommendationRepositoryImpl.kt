@@ -1,8 +1,9 @@
 package com.example.effectivemobiletestwork.avia.data
 
 import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
+import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
 import com.example.effectivemobiletestwork.avia.domain.model.Offer
-import com.example.effectivemobiletestwork.avia.domain.RecommendationRepository
+import com.example.effectivemobiletestwork.avia.domain.repository.RecommendationRepository
 import com.example.effectivemobiletestwork.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -10,8 +11,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class RecommendationRepositoryImpl(
-        private val networkClient: NetworkClient,
-        private val mapper: DTOToDataMappers
+    private val networkClient: NetworkClient,
+    private val mapper: DTOToDataMappers
     ) : RecommendationRepository {
         override suspend fun getRecommendations(): Flow<Resource<List<Offer>>> = flow {
             when (val response = networkClient.getRecommendations()) {

@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.data
+package com.example.effectivemobiletestwork.avia.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager
