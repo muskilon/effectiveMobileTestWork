@@ -1,12 +1,12 @@
 package com.example.effectivemobiletestwork.avia.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.navigation.fragment.findNavController
 import com.example.effectivemobiletestwork.databinding.FragmentTicketsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,6 +30,9 @@ class TicketsFragment : Fragment() {
 
         setFragmentResultListener("directionsTickets") { _, bundle ->
             processBundle(bundle)
+        }
+        binding.arrowBack.setOnClickListener {
+            findNavController().navigateUp()
         }
 
         binding.ticketsRecycler.adapter = ticketsAdapter
