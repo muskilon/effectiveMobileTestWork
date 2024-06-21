@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.effectivemobiletestwork.avia.domain.model.Ticket
+import com.example.domain.avia.model.Ticket
 import com.example.effectivemobiletestwork.databinding.ItemTicketBinding
 
 class TicketsAdapter : RecyclerView.Adapter<TicketsViewHolder>() {

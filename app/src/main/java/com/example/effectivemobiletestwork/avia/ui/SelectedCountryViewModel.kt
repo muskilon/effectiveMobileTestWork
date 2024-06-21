@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effectivemobiletestwork.avia.domain.TicketsOffersInteractor
-import com.example.effectivemobiletestwork.avia.domain.model.TicketsOffer
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.avia.TicketsOffersInteractor
+import com.example.domain.avia.model.TicketsOffer
 import kotlinx.coroutines.launch
 
 class SelectedCountryViewModel(
@@ -20,9 +19,9 @@ class SelectedCountryViewModel(
         viewModelScope.launch {
             ticketsOffersInteractor.getTicketsOffers().collect { offers ->
                 when (offers) {
-                    is Resource.Data -> offersLiveData.postValue(offers.value)
-                    is Resource.ConnectionError -> Unit
-                    is Resource.NotFound -> Unit
+                    is com.example.domain.Resource.Data -> offersLiveData.postValue(offers.value)
+                    is com.example.domain.Resource.ConnectionError -> Unit
+                    is com.example.domain.Resource.NotFound -> Unit
                 }
             }
         }

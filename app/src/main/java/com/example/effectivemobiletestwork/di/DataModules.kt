@@ -1,10 +1,10 @@
 package com.example.effectivemobiletestwork.di
 import android.content.Context
-import com.example.effectivemobiletestwork.avia.data.SharedStorage
-import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.data.network.MockAPI
-import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
-import com.example.effectivemobiletestwork.avia.data.network.RetrofitNetworkClient
+import com.example.data.avia.SharedStorage
+import com.example.data.avia.dto.DTOToDataMappers
+import com.example.data.avia.network.MockAPI
+import com.example.data.avia.network.NetworkClient
+import com.example.data.avia.network.RetrofitNetworkClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit

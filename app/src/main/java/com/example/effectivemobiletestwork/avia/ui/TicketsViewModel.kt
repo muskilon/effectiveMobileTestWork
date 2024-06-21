@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effectivemobiletestwork.avia.data.dto.TicketDTO
-import com.example.effectivemobiletestwork.avia.domain.TicketsInteractor
-import com.example.effectivemobiletestwork.avia.domain.model.Ticket
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.avia.TicketsInteractor
+import com.example.domain.avia.model.Ticket
 import kotlinx.coroutines.launch
 
 class TicketsViewModel(
@@ -22,9 +20,9 @@ class TicketsViewModel(
         viewModelScope.launch {
             ticketsInteractor.getTickets().collect { offers ->
                 when (offers) {
-                    is Resource.Data -> offersLiveData.postValue(offers.value)
-                    is Resource.ConnectionError -> Unit
-                    is Resource.NotFound -> Unit
+                    is com.example.domain.Resource.Data -> offersLiveData.postValue(offers.value)
+                    is com.example.domain.Resource.ConnectionError -> Unit
+                    is com.example.domain.Resource.NotFound -> Unit
                 }
             }
         }

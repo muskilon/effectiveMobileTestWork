@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.effectivemobiletestwork.avia.domain.DepartureCityInteractor
-import com.example.effectivemobiletestwork.avia.domain.RecommendationsInteractor
-import com.example.effectivemobiletestwork.avia.domain.model.Offer
-import com.example.effectivemobiletestwork.domain.Resource
+import com.example.domain.avia.DepartureCityInteractor
+import com.example.domain.avia.RecommendationsInteractor
+import com.example.domain.avia.model.Offer
 import kotlinx.coroutines.launch
 
 class AviaViewModel(
@@ -23,9 +22,9 @@ class AviaViewModel(
         viewModelScope.launch {
             recommendationsInteractor.getRecommendations().collect { offers ->
                 when (offers) {
-                    is Resource.Data -> offersLiveData.postValue(offers.value)
-                    is Resource.ConnectionError -> Unit
-                    is Resource.NotFound -> Unit
+                    is com.example.domain.Resource.Data -> offersLiveData.postValue(offers.value)
+                    is com.example.domain.Resource.ConnectionError -> Unit
+                    is com.example.domain.Resource.NotFound -> Unit
                 }
             }
         }
