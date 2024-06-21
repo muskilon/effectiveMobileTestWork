@@ -6,5 +6,6 @@ object Key {
     const val DIRECTIONS = "directions"
     const val DIRECTIONS_TICKETS = "directionsTickets"
     const val DEPARTURE_DATE = "departureDate"
+    const val BACK_DATE = "backDate"
 
 }

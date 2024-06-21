@@ -24,6 +24,8 @@ class SelectedCountryFragment : Fragment() {
     private var _binding: FragmentSelectedCountryBinding? = null
     private val binding get() = _binding!!
     private var departureDate = Calendar.getInstance().time
+    private var from: String? = null
+    private var to: String? = null
 
     private val viewModel by viewModel<SelectedCountryViewModel>()
 
@@ -41,6 +43,8 @@ class SelectedCountryFragment : Fragment() {
         binding.calendar.isVisible = false
 
         setFragmentResultListener(Key.DIRECTIONS) { _, bundle -> processBundle(bundle) }
+        binding.from.text = from
+        binding.to.text = to
 
         binding.arrowBack.setOnClickListener {
             findNavController().navigateUp()
@@ -63,7 +67,7 @@ class SelectedCountryFragment : Fragment() {
         }
         binding.backDate.setOnClickListener {
             binding.calendar.isVisible = true
-            binding.calendar.tag = "backDate"
+            binding.calendar.tag = Key.BACK_DATE
         }
         binding.allTickets.setOnClickListener {
             setFragmentResult(
@@ -124,6 +128,8 @@ class SelectedCountryFragment : Fragment() {
         if(!bundle.isEmpty) {
             binding.from.text = bundle.getString(Key.FROM)
             binding.to.text = bundle.getString(Key.TO)
+            from = bundle.getString(Key.FROM)
+            to = bundle.getString(Key.TO)
         }
     }
 
