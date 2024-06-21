@@ -1,10 +1,9 @@
-package com.example.effectivemobiletestwork.avia.data
+package com.example.data.avia
 
-import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
+import com.example.data.avia.dto.DTOToDataMappers
+import com.example.data.avia.network.NetworkClient
 import com.example.domain.avia.repository.TicketsRepository
 import com.example.domain.avia.model.Ticket
-import com.example.domain.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

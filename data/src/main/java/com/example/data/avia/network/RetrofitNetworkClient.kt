@@ -1,13 +1,12 @@
-package com.example.effectivemobiletestwork.avia.data.network
+package com.example.data.avia.network
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
-import com.example.effectivemobiletestwork.avia.data.dto.MainRecommendationDTO
-import com.example.effectivemobiletestwork.avia.data.dto.TicketsDTO
-import com.example.effectivemobiletestwork.avia.data.dto.TicketsOffersDTO
-import com.example.domain.Resource
+import com.example.data.avia.dto.MainRecommendationDTO
+import com.example.data.avia.dto.TicketsDTO
+import com.example.data.avia.dto.TicketsOffersDTO
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException

@@ -1,7 +1,7 @@
-package com.example.effectivemobiletestwork.avia.data
+package com.example.data.avia
 
-import com.example.effectivemobiletestwork.avia.data.dto.DTOToDataMappers
-import com.example.effectivemobiletestwork.avia.data.network.NetworkClient
+import com.example.data.avia.dto.DTOToDataMappers
+import com.example.data.avia.network.NetworkClient
 import com.example.domain.avia.repository.TicketsOffersRepository
 import com.example.domain.avia.model.TicketsOffer
 import com.example.domain.Resource

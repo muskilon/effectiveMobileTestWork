@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.data
+package com.example.data.avia
 
 import com.example.domain.avia.repository.SharedRepository
 

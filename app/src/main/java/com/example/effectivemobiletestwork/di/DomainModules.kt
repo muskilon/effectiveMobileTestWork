@@ -1,9 +1,9 @@
 package com.example.effectivemobiletestwork.di
 
-import com.example.effectivemobiletestwork.avia.data.RecommendationRepositoryImpl
-import com.example.effectivemobiletestwork.avia.data.SharedRepositoryImpl
-import com.example.effectivemobiletestwork.avia.data.TicketsOffersRepositoryImpl
-import com.example.effectivemobiletestwork.avia.data.TicketsRepositoryImpl
+import com.example.data.avia.RecommendationRepositoryImpl
+import com.example.data.avia.SharedRepositoryImpl
+import com.example.data.avia.TicketsOffersRepositoryImpl
+import com.example.data.avia.TicketsRepositoryImpl
 import com.example.domain.avia.DepartureCityInteractor
 import com.example.domain.avia.repository.RecommendationRepository
 import com.example.domain.avia.RecommendationsInteractor

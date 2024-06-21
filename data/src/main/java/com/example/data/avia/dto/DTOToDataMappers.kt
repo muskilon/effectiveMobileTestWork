@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.data.dto
+package com.example.data.avia.dto
 
 import com.example.domain.avia.model.Offer
 import com.example.domain.avia.model.Ticket
