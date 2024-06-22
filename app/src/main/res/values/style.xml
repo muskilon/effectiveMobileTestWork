@@ -37,4 +37,8 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
+    <style name="CustomSwitcher" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/blue</item>
+    </style>
+
 </resources>

@@ -474,6 +474,7 @@
         />
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/subscribe_switcher"
+        android:theme="@style/CustomSwitcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
