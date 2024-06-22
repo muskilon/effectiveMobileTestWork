@@ -62,6 +62,7 @@ class AviaFragment : Fragment() {
         binding.to.onFocusChangeListener = View.OnFocusChangeListener { _, isFocus ->
             if(isFocus) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                binding.include.to.requestFocus()
             }
         }
 
@@ -70,7 +71,10 @@ class AviaFragment : Fragment() {
             RecyclerView.HORIZONTAL
         )
         with(binding) {
-            to.setOnClickListener { bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED }
+            to.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            include.to.requestFocus()
+            }
             offersRecycler.adapter = aviaAdapter
             offersRecycler.addItemDecoration(
                 divider.apply {
@@ -82,7 +86,6 @@ class AviaFragment : Fragment() {
             from.addTextChangedListener(getTextWatcherForFrom())
             binding.from.setText(viewModel.getDepartureCity())
 
-//            to.addTextChangedListener(getTextWatcher(to.tag.toString()))
             include.to.addTextChangedListener(getTextWatcherForBottomSheetForTo())
 
             include.everywhere.setOnClickListener {
@@ -148,6 +151,12 @@ class AviaFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         (activity as RootActivity).hideNavigation(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.include.to.setText(String())
+        binding.to.setText(String())
     }
 
     override fun onDestroyView() {
