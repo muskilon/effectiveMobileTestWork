@@ -1,18 +1,22 @@
 package com.example.effectivemobiletestwork.avia.ui
 
 import android.os.Bundle
+import android.text.SpannedString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.text.buildSpannedString
+import androidx.core.text.color
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.domain.Key
-import com.example.effectivemobiletestwork.R
 import com.example.domain.avia.model.TicketsOffer
+import com.example.effectivemobiletestwork.R
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -103,10 +107,17 @@ class SelectedCountryFragment : Fragment() {
 
     }
 
-    private fun getDateForFilter(date: Date): String {
-        val formatter = SimpleDateFormat("dd MMM, EEE", Locale.getDefault())
-        val formatedDate = formatter.format(date).replace(".", "")
-        return formatedDate
+    private fun getDateForFilter(date: Date): SpannedString {
+        val formatter = SimpleDateFormat("dd MMM EEE", Locale.getDefault())
+        val formatedDate = formatter.format(date)
+        val string: SpannedString = buildSpannedString {
+            append(formatedDate.substring(0,6))
+            color(ContextCompat.getColor(requireContext(), R.color.grey_6)) {
+                append(",${formatedDate.substring(6).replace(".", "")}")
+            }
+        }
+
+        return string
     }
 
     private fun getDateForTickets(date: Date): String {
