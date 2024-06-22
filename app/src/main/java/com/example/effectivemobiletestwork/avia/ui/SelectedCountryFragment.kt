@@ -24,8 +24,8 @@ class SelectedCountryFragment : Fragment() {
     private var _binding: FragmentSelectedCountryBinding? = null
     private val binding get() = _binding!!
     private var departureDate = Calendar.getInstance().time
-    private var from: String? = null
-    private var to: String? = null
+    private var departure: String? = null
+    private var arrival: String? = null
 
     private val viewModel by viewModel<SelectedCountryViewModel>()
 
@@ -40,55 +40,60 @@ class SelectedCountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.calendar.isVisible = false
-
         setFragmentResultListener(Key.DIRECTIONS) { _, bundle -> processBundle(bundle) }
-        binding.from.text = from
-        binding.to.text = to
 
-        binding.arrowBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        with(binding){
+            calendar.isVisible = false
+            from.text = departure
+            binding.to.text = arrival
 
-        binding.date.text = getDateForFilter(departureDate)
-
-        binding.changeDirection.setOnClickListener {
-            val temp = binding.from.text
-            binding.from.text = binding.to.text
-            binding.to.text = temp
-        }
-        binding.clear.setOnClickListener {
-            binding.to.text = String()
-        }
-
-        binding.date.setOnClickListener {
-            binding.calendar.isVisible = true
-            binding.calendar.tag = Key.DEPARTURE_DATE
-        }
-        binding.backDate.setOnClickListener {
-            binding.calendar.isVisible = true
-            binding.calendar.tag = Key.BACK_DATE
-        }
-        binding.allTickets.setOnClickListener {
-            setFragmentResult(
-                Key.DIRECTIONS_TICKETS,
-                bundleOf(Key.FROM to binding.from.text, Key.TO to binding.to.text, Key.DEPARTURE_DATE to getDateForTickets(departureDate))
-            )
-            findNavController().navigate(R.id.action_selectedCountryFragment_to_ticketsFragment)
-        }
-
-        binding.calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val calender = Calendar.getInstance()
-            calender.set(year, month, dayOfMonth)
-            if (binding.calendar.tag == Key.DEPARTURE_DATE) {
-                departureDate = calender.time
-                binding.date.text = getDateForFilter(calender.time)
+            arrowBack.setOnClickListener {
+                findNavController().navigateUp()
             }
-            else {
-                binding.backDate.text = getDateForFilter(calender.time)
-                binding.backDate.setCompoundDrawables(null, null, null, null)
+
+            date.text = getDateForFilter(departureDate)
+
+            changeDirection.setOnClickListener {
+                val temp = from.text
+                from.text = binding.to.text
+                to.text = temp
             }
-            binding.calendar.isVisible = false
+            clear.setOnClickListener {
+                to.text = String()
+            }
+
+            date.setOnClickListener {
+                calendar.isVisible = true
+                calendar.tag = Key.DEPARTURE_DATE
+            }
+            backDate.setOnClickListener {
+                calendar.isVisible = true
+                calendar.tag = Key.BACK_DATE
+            }
+            allTickets.setOnClickListener {
+                setFragmentResult(
+                    Key.DIRECTIONS_TICKETS,
+                    bundleOf(
+                        Key.FROM to from.text,
+                        Key.TO to to.text,
+                        Key.DEPARTURE_DATE to getDateForTickets(departureDate)
+                    )
+                )
+                findNavController().navigate(R.id.action_selectedCountryFragment_to_ticketsFragment)
+            }
+
+            calendar.setOnDateChangeListener { _, year, month, dayOfMonth ->
+                val calender = Calendar.getInstance()
+                calender.set(year, month, dayOfMonth)
+                if (calendar.tag == Key.DEPARTURE_DATE) {
+                    departureDate = calender.time
+                    date.text = getDateForFilter(calender.time)
+                } else {
+                    backDate.text = getDateForFilter(calender.time)
+                    backDate.setCompoundDrawables(null, null, null, null)
+                }
+                calendar.isVisible = false
+            }
         }
 
         viewModel.getTicketsOffers()
@@ -111,25 +116,27 @@ class SelectedCountryFragment : Fragment() {
     }
 
     private fun processOffers(offers: List<TicketsOffer>) {
-        binding.company1.text = offers[0].title
-        binding.price1.text = offers[0].price
-        binding.timeTable1.text = offers[0].timeRange
+        with(binding){
+            company1.text = offers[0].title
+            price1.text = offers[0].price
+            timeTable1.text = offers[0].timeRange
 
-        binding.company2.text = offers[1].title
-        binding.price2.text = offers[1].price
-        binding.timeTable2.text = offers[1].timeRange
+            company2.text = offers[1].title
+            price2.text = offers[1].price
+            timeTable2.text = offers[1].timeRange
 
-        binding.company3.text = offers[2].title
-        binding.price3.text = offers[2].price
-        binding.timeTable3.text = offers[2].timeRange
+            company3.text = offers[2].title
+            price3.text = offers[2].price
+            timeTable3.text = offers[2].timeRange
+        }
     }
 
     private fun processBundle(bundle: Bundle) {
         if(!bundle.isEmpty) {
             binding.from.text = bundle.getString(Key.FROM)
             binding.to.text = bundle.getString(Key.TO)
-            from = bundle.getString(Key.FROM)
-            to = bundle.getString(Key.TO)
+            departure = bundle.getString(Key.FROM)
+            arrival = bundle.getString(Key.TO)
         }
     }
 
