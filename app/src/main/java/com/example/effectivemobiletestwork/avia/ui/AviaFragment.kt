@@ -79,11 +79,11 @@ class AviaFragment : Fragment() {
                     isLastItemDecorated = false
                 }
             )
-            from.addTextChangedListener(getTextWatcher(from.tag.toString()))
+            from.addTextChangedListener(getTextWatcherForFrom())
             binding.from.setText(viewModel.getDepartureCity())
 
-            to.addTextChangedListener(getTextWatcher(to.tag.toString()))
-            include.to.addTextChangedListener(getTextWatcher(include.to.tag.toString()))
+//            to.addTextChangedListener(getTextWatcher(to.tag.toString()))
+            include.to.addTextChangedListener(getTextWatcherForBottomSheetForTo())
 
             include.everywhere.setOnClickListener {
                 include.to.setText(R.string.everywhere)
@@ -109,19 +109,22 @@ class AviaFragment : Fragment() {
 
     }
 
-    private fun getTextWatcher(tag: String) = object : TextWatcher {
+    private fun getTextWatcherForFrom() = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            when(tag) {
-                "from" -> {
                     viewModel.setDepartureCity(s.toString())
                     binding.include.from.text = s.toString()
-                }
-                "to" -> transitionDebounce(s.toString(), binding.from.text.toString())
-                else -> Unit
-            }
+        }
 
+        override fun afterTextChanged(s: Editable?) = Unit
+    }
+
+    private fun getTextWatcherForBottomSheetForTo() = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                transitionDebounce(s.toString(), binding.from.text.toString())
         }
 
         override fun afterTextChanged(s: Editable?) = Unit
