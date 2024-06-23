@@ -23,16 +23,6 @@ class RootActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.container_view) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
-
-//        navController.addOnDestinationChangedListener { _, destination, _ ->
-//            when (destination.id) {
-//                R.id.aviaFragment,
-//                R.id.hotelsFragment,
-//                R.id.shorterFragment,
-//                R.id.subscriptionsFragment,
-//                R.id.profileFragment
-//            }
-//        }
     }
     fun hideNavigation(isVisible: Boolean) {
         binding.bottomNavigationView.isVisible = isVisible

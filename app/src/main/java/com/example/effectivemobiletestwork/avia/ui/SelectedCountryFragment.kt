@@ -116,7 +116,6 @@ class SelectedCountryFragment : Fragment() {
                 append(",${formatedDate.substring(6).replace(".", "")}")
             }
         }
-
         return string
     }
 
