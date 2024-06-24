@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/aviaFragment">
+    <fragment
+        android:id="@+id/aviaFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.AviaFragment"
+        android:label="fragment_avia"
+        tools:layout="@layout/fragment_avia" >
+        <action
+            android:id="@+id/action_aviaFragment_to_selectedCountryFragment"
+            app:destination="@id/selectedCountryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedCountryFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.SelectedCountryFragment"
+        android:label="fragment_selected_country"
+        tools:layout="@layout/fragment_selected_country" >
+        <action
+            android:id="@+id/action_selectedCountryFragment_to_ticketsFragment"
+            app:destination="@id/ticketsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.TicketsFragment"
+        android:label="fragment_tickets"
+        tools:layout="@layout/fragment_tickets" />
+</navigation>

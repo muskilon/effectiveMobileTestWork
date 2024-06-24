@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/aviaFragment"
+        android:id="@+id/startFragment"
         android:icon="@drawable/tab_avia"
         android:title="@string/avia" />
 
