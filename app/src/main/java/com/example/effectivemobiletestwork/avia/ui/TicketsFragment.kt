@@ -17,6 +17,8 @@ class TicketsFragment : Fragment() {
     private var _binding: FragmentTicketsBinding? = null
     private val binding get() = _binding!!
     private val ticketsAdapter = TicketsAdapter()
+    private var direction: String? = null
+    private var details: String? = null
 
     private val viewModel by viewModel<TicketsViewModel>()
 
@@ -33,6 +35,9 @@ class TicketsFragment : Fragment() {
         setFragmentResultListener(Key.DIRECTIONS_TICKETS) { _, bundle ->
             processBundle(bundle)
         }
+        binding.direction.text = direction
+        binding.details.text = details
+
         binding.arrowBack.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -47,9 +52,9 @@ class TicketsFragment : Fragment() {
     }
     private fun processBundle(bundle: Bundle) {
         if(!bundle.isEmpty) {
-            val direction = bundle.getString(Key.FROM) + "-" + bundle.getString(Key.TO)
+            direction = bundle.getString(Key.FROM) + "-" + bundle.getString(Key.TO)
             binding.direction.text = direction
-            val details = bundle.getString(Key.DEPARTURE_DATE) + getString(R.string.passengers)
+            details = bundle.getString(Key.DEPARTURE_DATE) + getString(R.string.passengers)
             binding.details.text = details
         }
     }
