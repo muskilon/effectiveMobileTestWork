@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.effectivemobiletestwork.R
-import com.example.effectivemobiletestwork.databinding.FragmentAviaBinding
 import com.example.effectivemobiletestwork.databinding.FragmentHardRouteBinding
-import com.example.effectivemobiletestwork.databinding.FragmentTicketsBinding
 
 class HardRouteFragment : Fragment() {
     private var _binding: FragmentHardRouteBinding? = null
@@ -30,5 +27,10 @@ class HardRouteFragment : Fragment() {
         toolbar.setNavigationOnClickListener{
             findNavController().navigateUp()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
