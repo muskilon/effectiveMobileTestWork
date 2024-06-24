@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.ui
+package com.example.effectivemobiletestwork.avia.ui.avia
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

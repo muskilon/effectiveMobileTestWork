@@ -6,16 +6,25 @@
     app:startDestination="@id/aviaFragment">
     <fragment
         android:id="@+id/aviaFragment"
-        android:name="com.example.effectivemobiletestwork.avia.ui.AviaFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.avia.AviaFragment"
         android:label="fragment_avia"
         tools:layout="@layout/fragment_avia" >
         <action
             android:id="@+id/action_aviaFragment_to_selectedCountryFragment"
             app:destination="@id/selectedCountryFragment" />
+        <action
+            android:id="@+id/action_aviaFragment_to_hardRouteFragment"
+            app:destination="@id/hardRouteFragment" />
+        <action
+            android:id="@+id/action_aviaFragment_to_hotTicketsFragment"
+            app:destination="@id/hotTicketsFragment" />
+        <action
+            android:id="@+id/action_aviaFragment_to_weekendFragment"
+            app:destination="@id/weekendFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectedCountryFragment"
-        android:name="com.example.effectivemobiletestwork.avia.ui.SelectedCountryFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.selectedCountry.SelectedCountryFragment"
         android:label="fragment_selected_country"
         tools:layout="@layout/fragment_selected_country" >
         <action
@@ -24,7 +33,22 @@
     </fragment>
     <fragment
         android:id="@+id/ticketsFragment"
-        android:name="com.example.effectivemobiletestwork.avia.ui.TicketsFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.tickets.TicketsFragment"
         android:label="fragment_tickets"
         tools:layout="@layout/fragment_tickets" />
+    <fragment
+        android:id="@+id/hardRouteFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.hardRoute.HardRouteFragment"
+        android:label="fragment_hard_route"
+        tools:layout="@layout/fragment_hard_route"/>
+    <fragment
+        android:id="@+id/hotTicketsFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.hotTickets.HotTicketsFragment"
+        android:label="fragment_hot_tickets"
+        tools:layout="@layout/fragment_hot_tickets" />
+    <fragment
+        android:id="@+id/weekendFragment"
+        android:name="com.example.effectivemobiletestwork.avia.ui.weekend.WeekendFragment"
+        android:label="fragment_weekend"
+        tools:layout="@layout/fragment_weekend" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.ui
+package com.example.effectivemobiletestwork.avia.ui.avia
 
 import android.os.Bundle
 import android.text.Editable
@@ -102,6 +102,15 @@ class AviaFragment : Fragment() {
             }
             include.clear.setOnClickListener{
                 include.to.setText(String())
+            }
+            include.hardRoute.setOnClickListener {
+                findNavController().navigate(R.id.action_aviaFragment_to_hardRouteFragment)
+            }
+            include.hotTickets.setOnClickListener {
+                findNavController().navigate(R.id.action_aviaFragment_to_hotTicketsFragment)
+            }
+            include.weekend.setOnClickListener {
+                findNavController().navigate(R.id.action_aviaFragment_to_weekendFragment)
             }
         }
 

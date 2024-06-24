@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.ui
+package com.example.effectivemobiletestwork.avia.ui.tickets
 
 import android.view.ViewGroup
 import androidx.core.view.isVisible

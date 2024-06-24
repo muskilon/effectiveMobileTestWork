@@ -1,4 +1,4 @@
-package com.example.effectivemobiletestwork.avia.ui
+package com.example.effectivemobiletestwork.avia.ui.selectedCountry
 
 import android.os.Bundle
 import android.text.SpannedString
