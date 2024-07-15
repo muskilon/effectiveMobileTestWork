@@ -3,17 +3,15 @@ package com.example.effectivemobiletestwork.avia.ui.avia
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Key
 import com.example.effectivemobiletestwork.R
+import com.example.effectivemobiletestwork.base.BaseFragment
 import com.example.effectivemobiletestwork.databinding.FragmentAviaBinding
 import com.example.effectivemobiletestwork.root.RootActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -23,22 +21,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AviaFragment : Fragment() {
-    private var _binding: FragmentAviaBinding? = null
-    private val binding get() = _binding!!
+class AviaFragment : BaseFragment<FragmentAviaBinding>(FragmentAviaBinding::inflate) {
     private val aviaAdapter = AviaAdapter()
     private var bottomSheetBehavior = BottomSheetBehavior<View>()
     private var transitionJob: Job? = null
     private val viewModel by viewModel<AviaViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAviaBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,10 +58,6 @@ class AviaFragment : Fragment() {
             RecyclerView.HORIZONTAL
         )
         with(binding) {
-            to.setOnClickListener {
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            include.to.requestFocus()
-            }
             offersRecycler.adapter = aviaAdapter
             offersRecycler.addItemDecoration(
                 divider.apply {
@@ -87,7 +70,33 @@ class AviaFragment : Fragment() {
             binding.from.setText(viewModel.getDepartureCity())
 
             include.to.addTextChangedListener(getTextWatcherForBottomSheetForTo())
+        }
+        setClickListeners()
 
+        viewModel.getRecommendations()
+        viewModel.observeOffers().observe(viewLifecycleOwner){ offers ->
+            aviaAdapter.setData(offers)
+        }
+
+    }
+
+    private fun getTextWatcherForFrom() = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    viewModel.setDepartureCity(s.toString())
+                    binding.include.from.text = s.toString()
+        }
+
+        override fun afterTextChanged(s: Editable?) = Unit
+    }
+
+    private fun setClickListeners() {
+        with(binding) {
+            to.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                include.to.requestFocus()
+            }
             include.everywhere.setOnClickListener {
                 include.to.setText(R.string.everywhere)
             }
@@ -113,23 +122,6 @@ class AviaFragment : Fragment() {
                 findNavController().navigate(R.id.action_aviaFragment_to_weekendFragment)
             }
         }
-
-        viewModel.getRecommendations()
-        viewModel.observeOffers().observe(viewLifecycleOwner){ offers ->
-            aviaAdapter.setData(offers)
-        }
-
-    }
-
-    private fun getTextWatcherForFrom() = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    viewModel.setDepartureCity(s.toString())
-                    binding.include.from.text = s.toString()
-        }
-
-        override fun afterTextChanged(s: Editable?) = Unit
     }
 
     private fun getTextWatcherForBottomSheetForTo() = object : TextWatcher {
@@ -168,10 +160,6 @@ class AviaFragment : Fragment() {
         binding.to.setText(String())
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
     companion object {
         private const val TRANSITION_DEBOUNCE_DELAY = 1000L
     }

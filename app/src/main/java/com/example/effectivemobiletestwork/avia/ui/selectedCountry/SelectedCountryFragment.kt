@@ -2,21 +2,19 @@ package com.example.effectivemobiletestwork.avia.ui.selectedCountry
 
 import android.os.Bundle
 import android.text.SpannedString
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.domain.Key
 import com.example.domain.avia.model.TicketsOffer
 import com.example.effectivemobiletestwork.R
+import com.example.effectivemobiletestwork.base.BaseFragment
 import com.example.effectivemobiletestwork.databinding.FragmentSelectedCountryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -24,22 +22,12 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class SelectedCountryFragment : Fragment() {
-    private var _binding: FragmentSelectedCountryBinding? = null
-    private val binding get() = _binding!!
+class SelectedCountryFragment : BaseFragment<FragmentSelectedCountryBinding>(FragmentSelectedCountryBinding::inflate) {
     private var departureDate = Calendar.getInstance().time
     private var departure: String? = null
     private var arrival: String? = null
 
     private val viewModel by viewModel<SelectedCountryViewModel>()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSelectedCountryBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -148,10 +136,5 @@ class SelectedCountryFragment : Fragment() {
             departure = bundle.getString(Key.FROM)
             arrival = bundle.getString(Key.TO)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
